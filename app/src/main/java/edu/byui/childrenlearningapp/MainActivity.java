@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         System.out.println("Hi from the end of the World");
-        System.out.println("I am changing the message to test merging conflicts. Iramar");
+        System.out.println("I am changing the message to test merging conflicts. Iramar. 2nd time");
     }
 }
