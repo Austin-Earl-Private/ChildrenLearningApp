@@ -14,16 +14,16 @@ public class NumbersTest {
     public void getName() {
         Numbers numb1 = new Numbers();
         numb1.setName("Austin");
-        assertEquals(numb1.getName(),"Austin");
+        assertEquals("Austin",numb1.getName());
     }
 
     @Test
     public void setName() {
         Numbers numb1 = new Numbers();
         numb1.setName("Austin");
-        assertEquals(numb1.getName(),"Austin");
+        assertEquals("Austin",numb1.getName());
         numb1.setName("Iramar");
-        assertEquals(numb1.getName(),"Iramar");
+        assertEquals("Iramar",numb1.getName());
 
     }
 

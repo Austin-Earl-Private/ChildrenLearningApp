@@ -13,9 +13,9 @@ public class LettersTest {
     @Test
     public void getVowel() {
         Letters letter = new Letters();
-        assertEquals(letter.getVowel(),false);
+        assertEquals(false,letter.getVowel());
         letter.setVowel(true);
-        assertEquals(letter.getVowel(),true);
+        assertEquals(true,letter.getVowel());
     }
 
     @Test
