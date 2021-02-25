@@ -12,6 +12,10 @@ public class LettersTest {
 
     @Test
     public void getVowel() {
+        Letters letter = new Letters();
+        assertEquals(letter.getVowel(),false);
+        letter.setVowel(true);
+        assertEquals(letter.getVowel(),true);
     }
 
     @Test
