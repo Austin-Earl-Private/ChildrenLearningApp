@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String NAME = "CHILD_NAME";
     public static final String AGE = "CHILD_AGE";
+    public static final String PREFERENCES = "PREFERENCES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +51,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void getData(View btnAction){
         String name;
-        int age;
+        String age;
 
         EditText getName = findViewById(R.id.txtName);
         EditText getAge = findViewById(R.id.txtAge);
         TextView display = findViewById(R.id.txtDisplay);
 
         name = getName.getText().toString();
-        age = Integer.parseInt(getAge.getText().toString());
+        age = getAge.getText().toString();
 
-        Intent intent = new Intent(this, Statics.class);
-        intent.putExtra(NAME, name);
-        intent.putExtra(AGE, age);
+        SharedPreferences childPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor save = childPref.edit();
 
-        startActivity(intent);
+        save.putString(NAME, name);
+        save.putString(AGE, age);
+        save.apply();
+
+        Toast.makeText(this,"Name and Age saved of the Child", Toast.LENGTH_SHORT).show();
+
+        //Intent intent = new Intent(this, Statics.class);
+        //intent.putExtra(NAME, name);
+        //intent.putExtra(AGE, age);
+
+        //startActivity(intent);
+
+    }
+
+    public void DisplayData(View btnDisplay){
+        SharedPreferences preferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
+        String childName = preferences.getString(NAME, null);
+        String childAge = preferences.getString(AGE, null);
+
+        TextView display = findViewById(R.id.txtDisplay);
+
+        display.setText("Child name: "+childName+"\nChild age: "+childAge);
 
     }
 }
