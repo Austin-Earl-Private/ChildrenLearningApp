@@ -1,0 +1,17 @@
+Index: app/src/test/java/edu/byui/childrenlearningapp/LettersTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport org.junit.Test;\r\n\r\nimport static org.junit.Assert.*;\r\n\r\npublic class LettersTest {\r\n\r\n    @Test\r\n    public void getName() {\r\n    }\r\n\r\n    @Test\r\n    public void getVowel() {\r\n    }\r\n\r\n    @Test\r\n    public void setName() {\r\n    }\r\n\r\n    @Test\r\n    public void setVowel() {\r\n    }\r\n\r\n    @Test\r\n    public void playSound() {\r\n    }\r\n\r\n    @Test\r\n    public void onCreateDisplay() {\r\n    }\r\n\r\n    @Test\r\n    public void onPress() {\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/test/java/edu/byui/childrenlearningapp/LettersTest.java	(revision 07cbf26904ed41237f1f4e06c67a835a58d356df)
++++ app/src/test/java/edu/byui/childrenlearningapp/LettersTest.java	(date 1614213553224)
+@@ -8,6 +8,7 @@
+ 
+     @Test
+     public void getName() {
++
+     }
+ 
+     @Test

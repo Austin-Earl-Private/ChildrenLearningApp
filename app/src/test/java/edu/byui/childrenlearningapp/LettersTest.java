@@ -8,6 +8,10 @@ public class LettersTest {
 
     @Test
     public void getName() {
+        Letters letter = new Letters();
+        assertEquals(null, letter.getName());
+        letter.setName("Frani");
+        assertEquals("Frani",letter.getName());
     }
 
     @Test
