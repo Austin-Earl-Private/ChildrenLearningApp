@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Log.d("Testing Gson",stringGsonUser);
 
-        String json = sharedPref.getString("user","");
-        Child newUser = gson.fromJson(json, Child.class);
+        //String json = sharedPref.getString("user","");
+        //Child newUser = gson.fromJson(json, Child.class);
 
-        Log.d("New Gson:", newUser.toString());
+        //Log.d("New Gson:", newUser.toString());
     }
 
     public void getData(View btnAction){
@@ -57,14 +57,16 @@ public class MainActivity extends AppCompatActivity {
         EditText getAge = findViewById(R.id.txtAge);
         TextView display = findViewById(R.id.txtDisplay);
 
-        name = getName.getText().toString();
-        age = getAge.getText().toString();
+        Child user = new Child();
+
+        user.setName(getName.getText().toString());
+        user.setAge(Integer.parseInt(getAge.getText().toString()));
 
         SharedPreferences childPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor save = childPref.edit();
 
-        save.putString(NAME, name);
-        save.putString(AGE, age);
+        save.putString(NAME, user.getName());
+        save.putString(AGE, String.valueOf(user.getAge()));
         save.apply();
 
         Toast.makeText(this,"Name and Age saved of the Child", Toast.LENGTH_SHORT).show();
