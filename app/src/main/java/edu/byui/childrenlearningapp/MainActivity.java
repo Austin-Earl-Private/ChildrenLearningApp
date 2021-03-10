@@ -1,4 +1,4 @@
-package edu.byui.childrenlearningapp;
+ package edu.byui.childrenlearningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getData(View btnAction){
-        String name;
-        String age;
-
         EditText getName = findViewById(R.id.txtName);
         EditText getAge = findViewById(R.id.txtAge);
         TextView display = findViewById(R.id.txtDisplay);
