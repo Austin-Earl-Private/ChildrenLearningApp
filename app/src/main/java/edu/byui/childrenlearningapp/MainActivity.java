@@ -23,18 +23,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Gson gson = new Gson();
-
-        Child user = new Child();
-
-        user.setName("Austin");
-        user.setAge(5);
-
-        String stringGsonUser = gson.toJson(user, Child.class);
 
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+        if(!sharedPref.contains(NAME)){
+            Intent first_login = new Intent(this, FirstLogin.class);
+            startActivity(first_login);
+        }else{
+            setContentView(R.layout.activity_main);
+            Gson gson = new Gson();
+
+            Child user = new Child();
+
+            user.setName("Austin");
+            user.setAge(5);
+
+            String stringGsonUser = gson.toJson(user, Child.class);
+        }
+
+
+
+
 
         //SharedPreferences.Editor prefEdit = sharedPref.edit();
 

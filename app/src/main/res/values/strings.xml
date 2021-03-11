@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">ChildrenLearningApp</string>
     <string name="set_data">Set Data</string>
+    <string name="title_activity_first_login">FirstLogin</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="let_s_begin">Let\'s begin!</string>
+    <string name="welcome_to_children_learning">Welcome to Children Learning!</string>
+    <string name="name">Name</string>
+    <string name="please_enter_your_child_s_name_and_age">Please enter your child\'s name and age.</string>
+    <string name="age">Age</string>
 </resources>
