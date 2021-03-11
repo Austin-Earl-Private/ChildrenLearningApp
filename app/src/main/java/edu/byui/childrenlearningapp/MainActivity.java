@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void getData(View btnAction){
         EditText getName = findViewById(R.id.txtName);
         EditText getAge = findViewById(R.id.txtAge);
-        TextView display = findViewById(R.id.txtDisplay);
+        TextView display = findViewById(R.id.txtDisplayName);
 
         Child user = new Child();
 
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         String childName = preferences.getString(NAME, null);
         String childAge = preferences.getString(AGE, null);
 
-        TextView display = findViewById(R.id.txtDisplay);
+        TextView display = findViewById(R.id.txtDisplayName);
 
         display.setText("Child name: "+childName+"\nChild age: "+childAge);
 

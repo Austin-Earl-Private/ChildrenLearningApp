@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtDisplay"
+        android:id="@+id/txtDisplayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -39,7 +39,7 @@
         android:text="@string/set_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDisplayName" />
 
     <EditText
         android:id="@+id/txtAge"

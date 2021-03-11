@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChildrenLearningApp">
+        <activity android:name=".LetterGame"></activity>
         <activity
             android:name=".FirstLogin"
             android:label="@string/title_activity_first_login"
-            android:theme="@style/Theme.ChildrenLearningApp.NoActionBar"></activity>
+            android:theme="@style/Theme.ChildrenLearningApp.NoActionBar" />
         <activity android:name=".GameMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>

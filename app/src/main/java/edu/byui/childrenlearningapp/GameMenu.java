@@ -2,7 +2,9 @@ package edu.byui.childrenlearningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * Skeleton of an Android Things activity.
@@ -27,5 +29,10 @@ public class GameMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_menu);
+    }
+
+    public void starLetterGame (View btnLetter){
+        Intent letterGame = new Intent(this, LetterGame.class);
+        startActivity(letterGame);
     }
 }
