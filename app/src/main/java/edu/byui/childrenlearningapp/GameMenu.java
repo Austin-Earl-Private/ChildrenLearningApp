@@ -31,7 +31,11 @@ public class GameMenu extends AppCompatActivity {
         setContentView(R.layout.activity_game_menu);
     }
 
-    public void starLetterGame (View btnLetter){
+    /**
+     * In this method the user will open the Letter Game, where the kid will learn his/her name.
+     * @param btnLetter
+     */
+    public void startLetterGame (View btnLetter){
         Intent letterGame = new Intent(this, LetterGame.class);
         startActivity(letterGame);
     }

@@ -16,10 +16,6 @@ import android.widget.Toast;
 
 public class FirstLogin extends AppCompatActivity {
 
-    public static final String NAME = "CHILD_NAME";
-    public static final String AGE = "CHILD_AGE";
-    public static final String PREFERENCES = "PREFERENCES";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +25,18 @@ public class FirstLogin extends AppCompatActivity {
 
 
     }
-
+    /**
+     * @author José Aguirre - Austin Earl - Iramar Vasquez
+     * This function catch the data from the parent of the kid when the APP starts for the first time.
+     * It is required to the game to have the name of the Kid, so this function prepare the initialization to make the games work properly.
+     * The name and age of the kids are saved in a class called Child in its members variables and then are shared with the SharedPreferences of the MainActivity.
+     * This Function it is called by a button in this FirsLogin layout
+     */
     public void setData(View btnAction){
+
+
         EditText getName = findViewById(R.id.child_name);
         EditText getAge = findViewById(R.id.child_age);
-        TextView display = findViewById(R.id.txtDisplayName);
 
         Child user = new Child();
 
@@ -45,16 +48,16 @@ public class FirstLogin extends AppCompatActivity {
         SharedPreferences childPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor save = childPref.edit();
 
-        save.putString(NAME, user.getName());
-        save.putString(AGE, String.valueOf(user.getAge()));
+        save.putString(MainActivity.NAME, user.getName());
+        save.putString(MainActivity.AGE, String.valueOf(user.getAge()));
         save.apply();
 
         Toast.makeText(this,"Name and Age saved of the Child", Toast.LENGTH_SHORT).show();
 
-        SharedPreferences preferences = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
 
-        String childName = preferences.getString(NAME, null);
-        String childAge = preferences.getString(AGE, null);
+        String childName = preferences.getString(MainActivity.NAME, null);
+        String childAge = preferences.getString(MainActivity.AGE, null);
 
         Log.i("First Launch", "setData: Name:"+childName+" Age: "+childAge);
 

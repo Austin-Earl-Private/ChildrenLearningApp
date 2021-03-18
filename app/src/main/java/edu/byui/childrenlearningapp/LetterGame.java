@@ -17,11 +17,11 @@ public class LetterGame extends AppCompatActivity {
     }
 
     public void showName(View btnDisplay){
-        SharedPreferences preferences = getSharedPreferences(FirstLogin.PREFERENCES, FirstLogin.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);
 
-        String childName = preferences.getString(FirstLogin.NAME, null);
-        String childAge = preferences.getString(FirstLogin.AGE, null);
-        Log.i("ShowName", "Getting SharedPreferences Name: "+childName+" "+FirstLogin.NAME);
+        String childName = preferences.getString(MainActivity.NAME, null);
+        String childAge = preferences.getString(MainActivity.AGE, null);
+        Log.i("ShowName", "Getting SharedPreferences Name: "+childName+" "+MainActivity.NAME);
         TextView display = findViewById(R.id.txtDisplayName);
 
         display.setText("Name: "+childName);
