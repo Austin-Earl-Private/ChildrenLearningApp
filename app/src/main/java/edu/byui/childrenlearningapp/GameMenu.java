@@ -23,6 +23,10 @@ import android.view.View;
  * <p>
  * You can find additional examples on GitHub: https://github.com/androidthings
  */
+/**
+ * In this method the user will open the Letter Game, where the kid will learn his/her name.
+ * @param btnLetter
+ */
 public class GameMenu extends AppCompatActivity {
 
     @Override
@@ -31,10 +35,7 @@ public class GameMenu extends AppCompatActivity {
         setContentView(R.layout.activity_game_menu);
     }
 
-    /**
-     * In this method the user will open the Letter Game, where the kid will learn his/her name.
-     * @param btnLetter
-     */
+
     public void startLetterGame (View btnLetter){
         Intent letterGame = new Intent(this, LetterGame.class);
         startActivity(letterGame);

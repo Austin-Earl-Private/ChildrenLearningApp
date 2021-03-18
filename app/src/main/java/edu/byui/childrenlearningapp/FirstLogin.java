@@ -13,7 +13,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/**
+ * @author José Aguirre - Austin Earl - Iramar Vasquez
+ * This function catch the data from the parent of the kid when the APP starts for the first time.
+ * It is required to the game to have the name of the Kid, so this function prepare the initialization to make the games work properly.
+ * The name and age of the kids are saved in a class called Child in its members variables and then are shared with the SharedPreferences of the MainActivity.
+ * This Function it is called by a button in this FirsLogin layout
+ */
 public class FirstLogin extends AppCompatActivity {
 
     @Override
@@ -25,13 +31,7 @@ public class FirstLogin extends AppCompatActivity {
 
 
     }
-    /**
-     * @author José Aguirre - Austin Earl - Iramar Vasquez
-     * This function catch the data from the parent of the kid when the APP starts for the first time.
-     * It is required to the game to have the name of the Kid, so this function prepare the initialization to make the games work properly.
-     * The name and age of the kids are saved in a class called Child in its members variables and then are shared with the SharedPreferences of the MainActivity.
-     * This Function it is called by a button in this FirsLogin layout
-     */
+
     public void setData(View btnAction){
 
 
