@@ -26,5 +26,7 @@ public class LetterGame extends AppCompatActivity {
 
         display.setText("Name: "+childName);
 
+        
+
     }
 }
