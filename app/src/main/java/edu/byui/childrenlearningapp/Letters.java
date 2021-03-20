@@ -1,10 +1,6 @@
 package edu.byui.childrenlearningapp;
 
-import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-public class Letters implements MediaPlayer{
+public class Letters implements MediaInterface {
 
     private String name;
     private Boolean vowel;

@@ -3,6 +3,7 @@ package edu.byui.childrenlearningapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,12 +20,19 @@ public class LetterGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_game);
 
-        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);
+        final MediaPlayer info = MediaPlayer.create(this, R.raw.letters_lets_learn_the_letters_in_your_name);
+        info.start();
 
+        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);
         String childName = preferences.getString(MainActivity.NAME, null).toUpperCase();
 
         LinearLayout letterView = findViewById(R.id.lettersView);
         LayoutInflater adder = LayoutInflater.from(this);
+
+        Letters a = new Letters();
+        a.setName("A");
+        a.setVowel(true);
+
 
         for (int i=0; i<childName.length(); i++){
             View view = adder.inflate(R.layout.letter_item, letterView, false);
@@ -35,6 +43,7 @@ public class LetterGame extends AppCompatActivity {
             switch (letter){
                 case "A":
                     letterImage.setImageResource(R.drawable.letters_a);
+                    //letterImage.setImageResource(a.onCreateDisplay());
                     break;
                 case "B":
                     letterImage.setImageResource(R.drawable.letters_b);

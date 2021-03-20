@@ -1,6 +1,6 @@
 package edu.byui.childrenlearningapp;
 
-public class Colors implements MediaPlayer{
+public class Colors implements MediaInterface {
     private String name;
     private Boolean primary;
 

@@ -40,7 +40,7 @@ public class FirstLogin extends AppCompatActivity {
 
         Child user = new Child();
 
-        user.setName(getName.getText().toString());
+        user.setName(getName.getText().toString().trim());
         user.setAge(Integer.parseInt(getAge.getText().toString()));
 
         Log.i("Child Class","Data Stored in the class: "+user.toString());

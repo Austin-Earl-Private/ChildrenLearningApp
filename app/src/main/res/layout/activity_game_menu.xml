@@ -6,37 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".GameMenu">
 
-    <Button
+    <ImageButton
         android:id="@+id/btnNumbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Learning Numbers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLetters" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLetters"
+        app:srcCompat="@drawable/numbers_button"
+        android:background="@null"
+        android:onClick="startNumberGame"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Learning Colors"
+        android:layout_marginTop="48dp"
+        android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNumbers" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNumbers"
+        app:srcCompat="@drawable/colors_button"
+        android:onClick="startColorGame"/>
+    <!--<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
 
     <ImageButton
         android:id="@+id/btnLetters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
+        android:background="@null"
+        android:onClick="startLetterGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_button"
-        android:onClick="startLetterGame"
-        android:background="@null"/>
+        app:srcCompat="@drawable/abc_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
