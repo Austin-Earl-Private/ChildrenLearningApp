@@ -1,5 +1,9 @@
 package edu.byui.childrenlearningapp;
 
+import android.view.LayoutInflater;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 public class Letters implements MediaPlayer{
 
     private String name;
@@ -29,6 +33,8 @@ public class Letters implements MediaPlayer{
     @Override
     public void onCreateDisplay() {
         //Here we will declare how to display the image of the letter.
+        //ImageView letterView =
+
     }
 
     @Override
