@@ -1,6 +1,6 @@
 package edu.byui.childrenlearningapp;
 
-public class Shapes implements MediaPlayer{
+public class Shapes implements MediaInterface {
 
     private String name;
 

@@ -1,6 +1,6 @@
 package edu.byui.childrenlearningapp;
 
-public class Animals implements MediaPlayer{
+public class Animals implements MediaInterface {
 
     private String name;
 

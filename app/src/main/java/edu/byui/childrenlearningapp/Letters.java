@@ -1,6 +1,6 @@
 package edu.byui.childrenlearningapp;
 
-public class Letters implements MediaPlayer{
+public class Letters implements MediaInterface {
 
     private String name;
     private Boolean vowel;
@@ -29,6 +29,8 @@ public class Letters implements MediaPlayer{
     @Override
     public void onCreateDisplay() {
         //Here we will declare how to display the image of the letter.
+        //ImageView letterView =
+
     }
 
     @Override
