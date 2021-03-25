@@ -1,7 +1,11 @@
 package edu.byui.childrenlearningapp;
 
+import android.media.MediaPlayer;
+
 public interface MediaInterface {
-    public void playSound();
+
+    MediaPlayer playSound(MediaPlayer sound);
+
     public void onCreateDisplay();
     public void onPress();
 }

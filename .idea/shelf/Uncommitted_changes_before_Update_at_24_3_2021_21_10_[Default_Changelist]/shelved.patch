@@ -1,0 +1,586 @@
+Index: app/src/main/java/edu/byui/childrenlearningapp/Letters.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic class Letters implements MediaInterface {\r\n\r\n    private String name;\r\n    private Boolean vowel;\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public Boolean getVowel() {\r\n        return vowel;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public void setVowel(Boolean vowel) {\r\n        this.vowel = vowel;\r\n    }\r\n\r\n    @Override\r\n    public void playSound() {\r\n        //Here will declare how to call the sound of the letter.\r\n    }\r\n\r\n    @Override\r\n    public void onCreateDisplay() {\r\n        //Here we will declare how to display the image of the letter.\r\n        //ImageView letterView =\r\n\r\n    }\r\n\r\n    @Override\r\n    public void onPress() {\r\n        //Here we will declare what happened when the kid tap the letter.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/Letters.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/Letters.java	(date 1616628126941)
+@@ -1,9 +1,17 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.graphics.drawable.Drawable;
++import android.media.MediaPlayer;
++import android.provider.MediaStore;
++import android.widget.ImageButton;
++import android.widget.ImageView;
++
+ public class Letters implements MediaInterface {
+ 
+     private String name;
+     private Boolean vowel;
++    private MediaPlayer sound;
++    private int image;
+ 
+     public String getName() {
+         return name;
+@@ -21,9 +29,26 @@
+         this.vowel = vowel;
+     }
+ 
++    public void setImage(int image) {
++        this.image = image;
++    }
++
++    public int getImage() {
++        return image;
++    }
++
++    public void setSound(MediaPlayer sound) {
++        this.sound = sound;
++    }
++
++    public MediaPlayer getSound() {
++        return sound;
++    }
++
+     @Override
+-    public void playSound() {
++    public MediaPlayer playSound(MediaPlayer sound) {
+         //Here will declare how to call the sound of the letter.
++        return null;
+     }
+ 
+     @Override
+Index: app/src/main/res/layout/letter_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"horizontal\"\r\n    app:layout_constraintBottom_toBottomOf=\"parent\"\r\n    app:layout_constraintEnd_toEndOf=\"parent\"\r\n    app:layout_constraintStart_toStartOf=\"parent\"\r\n    app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/letterImageView\"\r\n        android:layout_width=\"100dp\"\r\n        android:layout_height=\"100dp\"\r\n        app:srcCompat=\"@drawable/abc_button\" />\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/letter_item.xml	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/res/layout/letter_item.xml	(date 1616629680002)
+@@ -12,9 +12,10 @@
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent">
+ 
+-    <ImageView
++    <ImageButton
+         android:id="@+id/letterImageView"
+         android:layout_width="100dp"
+         android:layout_height="100dp"
+-        app:srcCompat="@drawable/abc_button" />
++        app:srcCompat="@drawable/abc_button"
++        />
+ </LinearLayout>
+Index: app/src/main/java/edu/byui/childrenlearningapp/LetterGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.SharedPreferences;\r\nimport android.media.MediaPlayer;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.widget.ImageView;\r\nimport android.widget.LinearLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\npublic class LetterGame extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_letter_game);\r\n\r\n        final MediaPlayer info = MediaPlayer.create(this, R.raw.letters_lets_learn_the_letters_in_your_name);\r\n        info.start();\r\n\r\n        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);\r\n        String childName = preferences.getString(MainActivity.NAME, null).toUpperCase();\r\n\r\n        LinearLayout letterView = findViewById(R.id.lettersView);\r\n        LayoutInflater adder = LayoutInflater.from(this);\r\n\r\n        Letters a = new Letters();\r\n        a.setName(\"A\");\r\n        a.setVowel(true);\r\n\r\n\r\n        for (int i=0; i<childName.length(); i++){\r\n            View view = adder.inflate(R.layout.letter_item, letterView, false);\r\n\r\n            ImageView letterImage = view.findViewById(R.id.letterImageView);\r\n            char array_letter = childName.charAt(i);\r\n            String letter = Character.toString(array_letter);\r\n            switch (letter){\r\n                case \"A\":\r\n                    letterImage.setImageResource(R.drawable.letters_a);\r\n                    //letterImage.setImageResource(a.onCreateDisplay());\r\n                    break;\r\n                case \"B\":\r\n                    letterImage.setImageResource(R.drawable.letters_b);\r\n                    break;\r\n                case \"C\":\r\n                    letterImage.setImageResource(R.drawable.letters_c);\r\n                    break;\r\n                case \"D\":\r\n                    letterImage.setImageResource(R.drawable.letters_d);\r\n                    break;\r\n                case \"E\":\r\n                    letterImage.setImageResource(R.drawable.letters_e);\r\n                    break;\r\n                case \"F\":\r\n                    letterImage.setImageResource(R.drawable.letters_f);\r\n                    break;\r\n                case \"G\":\r\n                    letterImage.setImageResource(R.drawable.letters_g);\r\n                    break;\r\n                case \"H\":\r\n                    letterImage.setImageResource(R.drawable.letters_h);\r\n                    break;\r\n                case \"I\":\r\n                    letterImage.setImageResource(R.drawable.letters_i);\r\n                    break;\r\n                case \"J\":\r\n                    letterImage.setImageResource(R.drawable.letters_j);\r\n                    break;\r\n                case \"K\":\r\n                    letterImage.setImageResource(R.drawable.letters_k);\r\n                    break;\r\n                case \"L\":\r\n                    letterImage.setImageResource(R.drawable.letters_l);\r\n                    break;\r\n                case \"M\":\r\n                    letterImage.setImageResource(R.drawable.letters_m);\r\n                    break;\r\n                case \"N\":\r\n                    letterImage.setImageResource(R.drawable.letters_n);\r\n                    break;\r\n                case \"O\":\r\n                    letterImage.setImageResource(R.drawable.letters_o);\r\n                    break;\r\n                case \"P\":\r\n                    letterImage.setImageResource(R.drawable.letters_p);\r\n                    break;\r\n                case \"Q\":\r\n                    letterImage.setImageResource(R.drawable.letters_q);\r\n                    break;\r\n                case \"R\":\r\n                    letterImage.setImageResource(R.drawable.letters_r);\r\n                    break;\r\n                case \"S\":\r\n                    letterImage.setImageResource(R.drawable.letters_s);\r\n                    break;\r\n                case \"T\":\r\n                    letterImage.setImageResource(R.drawable.letters_t);\r\n                    break;\r\n                case \"U\":\r\n                    letterImage.setImageResource(R.drawable.letters_u);\r\n                    break;\r\n                case \"V\":\r\n                    letterImage.setImageResource(R.drawable.letters_v);\r\n                    break;\r\n                case \"W\":\r\n                    letterImage.setImageResource(R.drawable.letters_w);\r\n                    break;\r\n                case \"X\":\r\n                    letterImage.setImageResource(R.drawable.letters_x);\r\n                    break;\r\n                case \"Y\":\r\n                    letterImage.setImageResource(R.drawable.letters_y);\r\n                    break;\r\n                case \"Z\":\r\n                    letterImage.setImageResource(R.drawable.letters_z);\r\n                    break;\r\n                default:\r\n                    Toast.makeText(this,\"Not letter found for: \"+letter, Toast.LENGTH_SHORT).show();\r\n            }\r\n\r\n\r\n            letterView.addView(view);\r\n\r\n        }\r\n    }\r\n\r\n    public void showName(View btnDisplay){\r\n        SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);\r\n\r\n        String childName = preferences.getString(MainActivity.NAME, null);\r\n        String childAge = preferences.getString(MainActivity.AGE, null);\r\n        Log.i(\"ShowName\", \"Getting SharedPreferences Name: \"+childName+\" \"+MainActivity.NAME);\r\n        TextView display = findViewById(R.id.txtDisplayName);\r\n\r\n        display.setText(\"Name: \"+childName);\r\n\r\n\r\n        \r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/LetterGame.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/LetterGame.java	(date 1616630792819)
+@@ -8,6 +8,7 @@
+ import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
++import android.widget.ImageButton;
+ import android.widget.ImageView;
+ import android.widget.LinearLayout;
+ import android.widget.TextView;
+@@ -29,96 +30,279 @@
+         LinearLayout letterView = findViewById(R.id.lettersView);
+         LayoutInflater adder = LayoutInflater.from(this);
+ 
+-        Letters a = new Letters();
+-        a.setName("A");
+-        a.setVowel(true);
++        //Letters a = new Letters();
++        //a.setName("A");
++        //a.setVowel(true);
++        //a.setImage(getDrawable(R.drawable.letters_a));
+ 
+ 
+         for (int i=0; i<childName.length(); i++){
+             View view = adder.inflate(R.layout.letter_item, letterView, false);
+ 
+-            ImageView letterImage = view.findViewById(R.id.letterImageView);
++            ImageButton letterImage = view.findViewById(R.id.letterImageView);
+             char array_letter = childName.charAt(i);
+             String letter = Character.toString(array_letter);
+             switch (letter){
+                 case "A":
+                     letterImage.setImageResource(R.drawable.letters_a);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_a);
++                            letterSound.start();
++                        }
++                    });
+                     //letterImage.setImageResource(a.onCreateDisplay());
+                     break;
+                 case "B":
+                     letterImage.setImageResource(R.drawable.letters_b);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_b);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "C":
+                     letterImage.setImageResource(R.drawable.letters_c);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_c);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "D":
+                     letterImage.setImageResource(R.drawable.letters_d);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_d);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "E":
+                     letterImage.setImageResource(R.drawable.letters_e);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_e);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "F":
+                     letterImage.setImageResource(R.drawable.letters_f);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_f);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "G":
+                     letterImage.setImageResource(R.drawable.letters_g);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_g);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "H":
+                     letterImage.setImageResource(R.drawable.letters_h);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_h);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "I":
+                     letterImage.setImageResource(R.drawable.letters_i);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_i);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "J":
+                     letterImage.setImageResource(R.drawable.letters_j);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_j);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "K":
+                     letterImage.setImageResource(R.drawable.letters_k);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_k);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "L":
+                     letterImage.setImageResource(R.drawable.letters_l);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_l);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "M":
+                     letterImage.setImageResource(R.drawable.letters_m);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_m);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "N":
+                     letterImage.setImageResource(R.drawable.letters_n);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_n);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "O":
+                     letterImage.setImageResource(R.drawable.letters_o);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_o);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "P":
+                     letterImage.setImageResource(R.drawable.letters_p);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_p);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "Q":
+                     letterImage.setImageResource(R.drawable.letters_q);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_q);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "R":
+                     letterImage.setImageResource(R.drawable.letters_r);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_r);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "S":
+                     letterImage.setImageResource(R.drawable.letters_s);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_s);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "T":
+                     letterImage.setImageResource(R.drawable.letters_t);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_t);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "U":
+                     letterImage.setImageResource(R.drawable.letters_u);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_u);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "V":
+                     letterImage.setImageResource(R.drawable.letters_v);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_v);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "W":
+                     letterImage.setImageResource(R.drawable.letters_w);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_w);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "X":
+                     letterImage.setImageResource(R.drawable.letters_x);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_x);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "Y":
+                     letterImage.setImageResource(R.drawable.letters_y);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_y);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 case "Z":
+                     letterImage.setImageResource(R.drawable.letters_z);
++                    letterImage.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            MediaPlayer letterSound = MediaPlayer.create(LetterGame.this.getApplicationContext(), R.raw.letters_name_z);
++                            letterSound.start();
++                        }
++                    });
+                     break;
+                 default:
+                     Toast.makeText(this,"Not letter found for: "+letter, Toast.LENGTH_SHORT).show();
+@@ -140,8 +324,11 @@
+ 
+         display.setText("Name: "+childName);
+ 
++    }
+ 
+-        
++    public void letterA(View btnLetter){
+ 
++        MediaPlayer letterSound = MediaPlayer.create(this, R.raw.numbers_ten);
++        letterSound.start();
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/edu/byui/childrenlearningapp/Colors.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic class Colors implements MediaInterface {\r\n    private String name;\r\n    private Boolean primary;\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public Boolean getPrimary() {\r\n        return primary;\r\n    }\r\n\r\n    public void setPrimary(Boolean primary) {\r\n        this.primary = primary;\r\n    }\r\n\r\n    @Override\r\n    public void playSound() {\r\n        //Here will declare how to call the sound of the name of the Color.\r\n    }\r\n\r\n    @Override\r\n    public void onCreateDisplay() {\r\n        //Here we will declare how to display the image of the Color.\r\n    }\r\n\r\n    @Override\r\n    public void onPress() {\r\n        //Here we will declare what happened when the kid tap the color.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/Colors.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/Colors.java	(date 1616623850395)
+@@ -1,5 +1,7 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.media.MediaPlayer;
++
+ public class Colors implements MediaInterface {
+     private String name;
+     private Boolean primary;
+@@ -21,8 +23,9 @@
+     }
+ 
+     @Override
+-    public void playSound() {
++    public MediaPlayer playSound(MediaPlayer sound) {
+         //Here will declare how to call the sound of the name of the Color.
++        return null;
+     }
+ 
+     @Override
+Index: app/src/main/java/edu/byui/childrenlearningapp/Numbers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic class Numbers implements MediaInterface {\r\n\r\n    private String name;\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    @Override\r\n    public void playSound() {\r\n        //Here will declare how to call the sound of the name of the number.\r\n    }\r\n\r\n    @Override\r\n    public void onCreateDisplay() {\r\n        //Here we will declare how to display the image of the number.\r\n    }\r\n\r\n    @Override\r\n    public void onPress() {\r\n        //Here we will declare what happened when the kid tap the number.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/Numbers.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/Numbers.java	(date 1616279662291)
+@@ -1,5 +1,7 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.media.MediaPlayer;
++
+ public class Numbers implements MediaInterface {
+ 
+     private String name;
+@@ -13,8 +15,10 @@
+     }
+ 
+     @Override
+-    public void playSound() {
++    public MediaPlayer playSound(MediaPlayer sound) {
+         //Here will declare how to call the sound of the name of the number.
++        MediaPlayer numberSound = sound;
++        return numberSound;
+     }
+ 
+     @Override
+Index: app/src/main/java/edu/byui/childrenlearningapp/Animals.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic class Animals implements MediaInterface {\r\n\r\n    private String name;\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    @Override\r\n    public void playSound() {\r\n        //Here will declare how to call the sound of the animal.\r\n    }\r\n\r\n    @Override\r\n    public void onCreateDisplay() {\r\n        //Here we will declare how to display the image of the animal.\r\n    }\r\n\r\n    @Override\r\n    public void onPress() {\r\n        //Here we will declare what happened when the kid tap the animal.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/Animals.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/Animals.java	(date 1616623824000)
+@@ -1,5 +1,7 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.media.MediaPlayer;
++
+ public class Animals implements MediaInterface {
+ 
+     private String name;
+@@ -13,8 +15,9 @@
+     }
+ 
+     @Override
+-    public void playSound() {
++    public MediaPlayer playSound(MediaPlayer sound) {
+         //Here will declare how to call the sound of the animal.
++        return null;
+     }
+ 
+     @Override
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\"/>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/res/layout/activity_main.xml	(date 1616624596801)
+@@ -4,4 +4,16 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".MainActivity"/>
+\ No newline at end of file
++    tools:context=".MainActivity">
++
++    <Button
++        android:id="@+id/btnMenu"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Go to Menu"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        android:onClick="GoToMenu"/>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/edu/byui/childrenlearningapp/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+> package edu.byui.childrenlearningapp;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.gson.Gson;\r\n\r\n /**\r\n  * @author José Aguirre - Austin Earl - Iramar Vasquez\r\n  *\r\n  * In this MainActivity we are creating the shared preferences to store the user information (Name and Age of the kid).\r\n  * It has an if - else statement to call the FirstLogin Activity to set the data of the kid when the app runs for the first time.\r\n  * When the Name and Age are stored, the App will start in the GameMenu Class every next time the user will open the game.\r\n  */\r\n public class MainActivity extends AppCompatActivity {\r\n\r\n    public static final String NAME = \"CHILD_NAME\";\r\n    public static final String AGE = \"CHILD_AGE\";\r\n    public static final String PREFERENCES = \"PREFERENCES\";\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        SharedPreferences sharedPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);\r\n        if(!sharedPref.contains(NAME)){\r\n            Intent first_login = new Intent(this, FirstLogin.class);\r\n            startActivity(first_login);\r\n        }else{\r\n            //setContentView(R.layout.activity_main);\r\n            Intent menuGame = new Intent(this, GameMenu.class);\r\n            startActivity(menuGame);\r\n        }\r\n\r\n\r\n        //SharedPreferences.Editor prefEdit = sharedPref.edit();\r\n\r\n        //prefEdit.putString(\"user\", stringGsonUser);\r\n        //prefEdit.commit();\r\n\r\n        //Log.d(\"Testing Gson\",stringGsonUser);\r\n\r\n        //String json = sharedPref.getString(\"user\",\"\");\r\n        //Child newUser = gson.fromJson(json, Child.class);\r\n\r\n        //Log.d(\"New Gson:\", newUser.toString());\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/MainActivity.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/MainActivity.java	(date 1616626115231)
+@@ -35,7 +35,7 @@
+             Intent first_login = new Intent(this, FirstLogin.class);
+             startActivity(first_login);
+         }else{
+-            //setContentView(R.layout.activity_main);
++            setContentView(R.layout.activity_main);
+             Intent menuGame = new Intent(this, GameMenu.class);
+             startActivity(menuGame);
+         }
+@@ -54,5 +54,10 @@
+         //Log.d("New Gson:", newUser.toString());
+     }
+ 
++    public void GoToMenu(View btnMenu){
++        Intent menuGame = new Intent(this, GameMenu.class);
++        startActivity(menuGame);
++    }
++
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/java/edu/byui/childrenlearningapp/MediaInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic interface MediaInterface {\r\n    public void playSound();\r\n    public void onCreateDisplay();\r\n    public void onPress();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/MediaInterface.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/MediaInterface.java	(date 1616279662201)
+@@ -1,7 +1,11 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.media.MediaPlayer;
++
+ public interface MediaInterface {
+-    public void playSound();
++
++    MediaPlayer playSound(MediaPlayer sound);
++
+     public void onCreateDisplay();
+     public void onPress();
+ }
+Index: app/src/main/java/edu/byui/childrenlearningapp/Shapes.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\npublic class Shapes implements MediaInterface {\r\n\r\n    private String name;\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    @Override\r\n    public void playSound() {\r\n        //Here will declare how to call the sound of the name of the Shape.\r\n    }\r\n\r\n    @Override\r\n    public void onCreateDisplay() {\r\n        //Here we will declare how to display the image of the Shape.\r\n    }\r\n\r\n    @Override\r\n    public void onPress() {\r\n        //Here we will declare what happened when the kid tap the Shape.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/Shapes.java	(revision f798ea830a72dabc0ecc352a15b9ece77a82a098)
++++ app/src/main/java/edu/byui/childrenlearningapp/Shapes.java	(date 1616623875889)
+@@ -1,5 +1,7 @@
+ package edu.byui.childrenlearningapp;
+ 
++import android.media.MediaPlayer;
++
+ public class Shapes implements MediaInterface {
+ 
+     private String name;
+@@ -13,8 +15,9 @@
+     }
+ 
+     @Override
+-    public void playSound() {
++    public MediaPlayer playSound(MediaPlayer sound) {
+         //Here will declare how to call the sound of the name of the Shape.
++        return null;
+     }
+ 
+     @Override
