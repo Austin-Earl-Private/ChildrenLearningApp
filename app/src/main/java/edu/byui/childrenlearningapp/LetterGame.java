@@ -314,7 +314,7 @@ public class LetterGame extends AppCompatActivity {
         }
     }
 
-    public void showName(View btnDisplay){
+    /**public void showName(View btnDisplay){
         SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, MODE_PRIVATE);
 
         String childName = preferences.getString(MainActivity.NAME, null);
@@ -324,7 +324,7 @@ public class LetterGame extends AppCompatActivity {
 
         display.setText("Name: "+childName);
 
-    }
+    }*/
 
 
 }
