@@ -1,5 +1,7 @@
 package edu.byui.childrenlearningapp;
 
+import android.media.MediaPlayer;
+
 public class Animals implements MediaInterface {
 
     private String name;
@@ -13,8 +15,9 @@ public class Animals implements MediaInterface {
     }
 
     @Override
-    public void playSound() {
+    public MediaPlayer playSound(MediaPlayer sound) {
         //Here will declare how to call the sound of the animal.
+        return null;
     }
 
     @Override

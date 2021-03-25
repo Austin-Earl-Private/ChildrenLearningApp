@@ -1,5 +1,7 @@
 package edu.byui.childrenlearningapp;
 
+import android.media.MediaPlayer;
+
 public class Numbers implements MediaInterface {
 
     private String name;
@@ -13,8 +15,10 @@ public class Numbers implements MediaInterface {
     }
 
     @Override
-    public void playSound() {
+    public MediaPlayer playSound(MediaPlayer sound) {
         //Here will declare how to call the sound of the name of the number.
+        MediaPlayer numberSound = sound;
+        return numberSound;
     }
 
     @Override

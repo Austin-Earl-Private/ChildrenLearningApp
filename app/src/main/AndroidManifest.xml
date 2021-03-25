@@ -9,15 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChildrenLearningApp">
-        <activity android:name=".ColorGame"></activity>
-        <activity android:name=".NumberGame" />
-        <activity android:name=".LetterGame" />
+        <activity android:name=".ColorGame"
+            android:label="Colors Game"
+            />
+        <activity android:name=".NumberGame"
+            android:label="Numbers Game"
+            />
+        <activity android:name=".LetterGame"
+            android:label="Letters Game"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".FirstLogin"
-            android:label="@string/title_activity_first_login"
+            android:label="Parent Area"
             android:theme="@style/Theme.ChildrenLearningApp.NoActionBar" />
-        <activity android:name=".GameMenu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".GameMenu"
+                android:label="Game Menu"
+            />
+        <activity android:name=".MainActivity"
+            android:label="Children Teaching"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
