@@ -1,5 +1,7 @@
 package edu.byui.childrenlearningapp;
 
+import android.media.MediaPlayer;
+
 public class Colors implements MediaInterface {
     private String name;
     private Boolean primary;
@@ -21,8 +23,9 @@ public class Colors implements MediaInterface {
     }
 
     @Override
-    public void playSound() {
+    public MediaPlayer playSound(MediaPlayer sound) {
         //Here will declare how to call the sound of the name of the Color.
+        return null;
     }
 
     @Override

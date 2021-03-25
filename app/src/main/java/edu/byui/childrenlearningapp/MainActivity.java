@@ -35,7 +35,7 @@ import com.google.gson.Gson;
             Intent first_login = new Intent(this, FirstLogin.class);
             startActivity(first_login);
         }else{
-            //setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_main);
             Intent menuGame = new Intent(this, GameMenu.class);
             startActivity(menuGame);
         }
@@ -52,6 +52,11 @@ import com.google.gson.Gson;
         //Child newUser = gson.fromJson(json, Child.class);
 
         //Log.d("New Gson:", newUser.toString());
+    }
+
+    public void GoToMenu(View btnMenu){
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
     }
 
 

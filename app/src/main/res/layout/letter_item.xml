@@ -12,9 +12,11 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/letterImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/abc_button" />
+        app:srcCompat="@drawable/abc_button"
+        android:background="@null"
+        />
 </LinearLayout>
