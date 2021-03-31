@@ -10,34 +10,33 @@
         android:id="@+id/btnNumbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:onClick="startNumberGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLetters"
-        app:srcCompat="@drawable/numbers_button"
-        android:background="@null"
-        android:onClick="startNumberGame"
-        />
+        app:srcCompat="@drawable/numbers_button" />
 
     <ImageButton
         android:id="@+id/btnColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:background="@null"
+        android:onClick="startColorGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNumbers"
-        app:srcCompat="@drawable/colors_button"
-        android:onClick="startColorGame"/>
+        app:srcCompat="@drawable/colors_button" />
     <!--<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
 
     <ImageButton
         android:id="@+id/btnLetters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:background="@null"
         android:onClick="startLetterGame"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,4 +44,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:onClick="startAnimalGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnColor"
+        app:srcCompat="@drawable/animals_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:srcCompat="@drawable/shapes_button"
+        android:onClick="startShapeGame"
+        android:background="@null"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

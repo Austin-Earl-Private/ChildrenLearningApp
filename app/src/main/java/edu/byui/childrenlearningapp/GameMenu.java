@@ -40,13 +40,22 @@ public class GameMenu extends AppCompatActivity {
         Intent letterGame = new Intent(this, LetterGame.class);
         startActivity(letterGame);
     }
-    public void startNumberGame (View btnLetter) {
+    public void startNumberGame (View btnNumber) {
         Intent numberGame = new Intent(this, NumberGame.class);
         startActivity(numberGame);
     }
 
-    public void startColorGame (View btnLetter) {
+    public void startColorGame (View btnColor) {
         Intent colorGame = new Intent(this, ColorGame.class);
         startActivity(colorGame);
+    }
+
+    public void startAnimalGame (View btnAnimal) {
+        Intent animalGame = new Intent(this, AnimalGame.class);
+        startActivity(animalGame);
+    }
+    public void startShapeGame (View btnAnimal) {
+        Intent shapeGame = new Intent(this, ShapeGame.class);
+        startActivity(shapeGame);
     }
 }
