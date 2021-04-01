@@ -42,6 +42,7 @@ public class LetterGame extends AppCompatActivity {
             ImageButton letterImage = view.findViewById(R.id.letterImageView);
             char array_letter = childName.charAt(i);
             String letter = Character.toString(array_letter);
+
             switch (letter){
                 case "A":
                     letterImage.setImageResource(R.drawable.letters_a);
