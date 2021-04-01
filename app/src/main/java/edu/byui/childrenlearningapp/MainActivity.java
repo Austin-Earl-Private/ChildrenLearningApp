@@ -23,6 +23,7 @@ import com.google.gson.Gson;
  public class MainActivity extends AppCompatActivity {
 
     public static final String NAME = "CHILD_NAME";
+     public static final String LAST_NAME = "CHILD_LAST_NAME";
     public static final String AGE = "CHILD_AGE";
     public static final String PREFERENCES = "PREFERENCES";
 
@@ -31,7 +32,7 @@ import com.google.gson.Gson;
         super.onCreate(savedInstanceState);
 
         SharedPreferences sharedPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
-        if(!sharedPref.contains(NAME)){
+        if(!sharedPref.contains(NAME) && !sharedPref.contains(LAST_NAME) && !sharedPref.contains(AGE)){
             Intent first_login = new Intent(this, FirstLogin.class);
             startActivity(first_login);
         }else{

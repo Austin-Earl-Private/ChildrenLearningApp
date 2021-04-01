@@ -37,10 +37,12 @@ public class FirstLogin extends AppCompatActivity {
 
         EditText getName = findViewById(R.id.child_name);
         EditText getAge = findViewById(R.id.child_age);
+        EditText getLastName = findViewById(R.id.child_last_name);
 
         Child user = new Child();
 
         user.setName(getName.getText().toString().trim());
+        user.setLast_name(getLastName.getText().toString().trim());
         user.setAge(Integer.parseInt(getAge.getText().toString()));
 
         Log.i("Child Class","Data Stored in the class: "+user.toString());
@@ -49,6 +51,7 @@ public class FirstLogin extends AppCompatActivity {
         SharedPreferences.Editor save = childPref.edit();
 
         save.putString(MainActivity.NAME, user.getName());
+        save.putString(MainActivity.LAST_NAME, user.getLast_name());
         save.putString(MainActivity.AGE, String.valueOf(user.getAge()));
         save.apply();
 
@@ -57,9 +60,10 @@ public class FirstLogin extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
 
         String childName = preferences.getString(MainActivity.NAME, null);
+        String childLastName = preferences.getString(MainActivity.LAST_NAME, null);
         String childAge = preferences.getString(MainActivity.AGE, null);
 
-        Log.i("First Launch", "setData: Name:"+childName+" Age: "+childAge);
+        Log.i("First Launch", "setData: Name:"+childName+" Last Name: "+childLastName +" Age: "+childAge);
 
         Intent menu = new Intent(this, GameMenu.class);
         startActivity(menu);
