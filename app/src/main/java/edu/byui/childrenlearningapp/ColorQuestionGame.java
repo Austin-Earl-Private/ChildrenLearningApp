@@ -3,7 +3,9 @@ package edu.byui.childrenlearningapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,11 +26,16 @@ public class ColorQuestionGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();
         Random rand =  new Random();
-        selectedAnswer = ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,true);
+        Log.d("List",colorsList.toString());
+        String selectedColor = colorsList.get(rand.nextInt(colorsList.size()));
+        selectedAnswer = ColorFactory.getColor(selectedColor,this,true);
+
+        Log.d("color", "onCreate: selected color"+selectedColor +"  "+ "selected anwser "+selectedAnswer);
         assert selectedAnswer != null;
         colorsList.remove(selectedAnswer.getColorName());
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
+        Log.d("wrong anwswers ",wrongAnswers.toString());
 
 
 
@@ -41,6 +48,35 @@ public class ColorQuestionGame extends AppCompatActivity {
         MediaPlayer color = MediaPlayer.create(this, selectedAnswer.getColorSoundRef());
         info.start();
         info.setNextMediaPlayer(color);
+
+        ImageButton button1 = findViewById(R.id.answer1);
+        ImageButton button2 = findViewById(R.id.answer2);
+        ImageButton button3 = findViewById(R.id.answer3);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedAnswer.playCorrectSound();
+                //Move to next game or Corect anwswer
+
+            }
+        });
+        button1.setImageResource(selectedAnswer.getColorImageRef());
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongAnswers.get(0).playWrongSound();
+            }
+        });
+        button2.setImageResource(wrongAnswers.get(0).getColorImageRef());
+
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongAnswers.get(1).playWrongSound();
+            }
+        });
+        button3.setImageResource(wrongAnswers.get(1).getColorImageRef());
 
     }
 

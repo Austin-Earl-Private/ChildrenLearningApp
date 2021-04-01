@@ -41,8 +41,15 @@ public class Color extends A_Color {
         players.add(player);
 
         Random rand = new Random();
-        players.get(rand.nextInt(players.size())).start();
-
+        player = players.get(rand.nextInt(players.size()));
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
     }
 
     @Override
@@ -62,7 +69,27 @@ public class Color extends A_Color {
         players.add(player);
 
         Random rand = new Random();
-        players.get(rand.nextInt(players.size())).start();
+//        players.get(rand.nextInt(players.size())).start();
+        player = players.get(rand.nextInt(players.size()));
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
+    }
+
+    @Override
+    public String toString() {
+        return "Color{" +
+                "colorName='" + colorName + '\'' +
+                ", contextWeakReference=" + contextWeakReference +
+                ", soundRef=" + soundRef +
+                ", isCorrect=" + isCorrect +
+                ", imgRef=" + imgRef +
+                '}';
     }
 
     @Override
@@ -71,7 +98,15 @@ public class Color extends A_Color {
             return;
         }
 
-        MediaPlayer.create(contextWeakReference.get(),soundRef).start();
+       MediaPlayer player =  MediaPlayer.create(contextWeakReference.get(),soundRef);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
     }
 
     @Override
@@ -82,5 +117,10 @@ public class Color extends A_Color {
     @Override
     public int getColorSoundRef() {
         return soundRef;
+    }
+
+    @Override
+    public int getColorImageRef() {
+        return imgRef;
     }
 }
