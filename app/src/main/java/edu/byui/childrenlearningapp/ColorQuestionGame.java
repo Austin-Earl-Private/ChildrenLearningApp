@@ -3,6 +3,8 @@ package edu.byui.childrenlearningapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -35,7 +37,7 @@ public class ColorQuestionGame extends AppCompatActivity {
         colorsList.remove(selectedAnswer.getColorName());
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
-        Log.d("wrong anwswers ",wrongAnswers.toString());
+        Log.d("wrong answers ",wrongAnswers.toString());
 
 
 
@@ -49,14 +51,40 @@ public class ColorQuestionGame extends AppCompatActivity {
         info.start();
         info.setNextMediaPlayer(color);
 
-        ImageButton button1 = findViewById(R.id.answer1);
-        ImageButton button2 = findViewById(R.id.answer2);
-        ImageButton button3 = findViewById(R.id.answer3);
+        ImageButton button1;
+        ImageButton button2;
+        ImageButton button3;
+        Random randButton = new Random();
+
+        if(randButton.nextInt(colorsList.size())==1) {
+            button1 = findViewById(R.id.answer1);
+            button2 = findViewById(R.id.answer2);
+            button3 = findViewById(R.id.answer3);
+        }
+        else if(randButton.nextInt(colorsList.size())==2){
+            button1 = findViewById(R.id.answer2);
+            button2 = findViewById(R.id.answer3);
+            button3 = findViewById(R.id.answer1);
+        }
+        else {
+            button1 = findViewById(R.id.answer3);
+            button2 = findViewById(R.id.answer1);
+            button3 = findViewById(R.id.answer2);
+        }
+
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedAnswer.playCorrectSound();
-                //Move to next game or Corect anwswer
+                //Move to next game or Correct answer
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent next = new Intent(ColorQuestionGame.this, ColorQuestionGame.class);
+                        startActivity(next);
+                    }
+                }, 2000); // Millisecond 1000 = 1 sec
 
             }
         });
