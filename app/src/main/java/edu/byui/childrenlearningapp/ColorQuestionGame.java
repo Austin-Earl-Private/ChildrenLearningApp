@@ -56,6 +56,7 @@ public class ColorQuestionGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 selectedAnswer.playCorrectSound();
+                //Move to next game or Corect anwswer
 
             }
         });
