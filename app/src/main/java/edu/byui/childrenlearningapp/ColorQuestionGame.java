@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,6 +49,33 @@ public class ColorQuestionGame extends AppCompatActivity {
         info.start();
         info.setNextMediaPlayer(color);
 
+        ImageButton button1 = findViewById(R.id.answer1);
+        ImageButton button2 = findViewById(R.id.answer2);
+        ImageButton button3 = findViewById(R.id.answer3);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedAnswer.playCorrectSound();
+
+            }
+        });
+        button1.setImageResource(selectedAnswer.getColorImageRef());
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongAnswers.get(0).playWrongSound();
+            }
+        });
+        button2.setImageResource(wrongAnswers.get(0).getColorImageRef());
+
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongAnswers.get(1).playWrongSound();
+            }
+        });
+        button3.setImageResource(wrongAnswers.get(1).getColorImageRef());
 
     }
 
