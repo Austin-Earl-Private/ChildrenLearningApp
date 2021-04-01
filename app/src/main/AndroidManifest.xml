@@ -18,6 +18,15 @@
             android:name=".ColorQuestionGame"
             android:label="Color Question Game" />
         <activity
+            android:name=".AnimalQuestionGame"
+            android:label="Animal Question Game" />
+        <activity
+            android:name=".NumberQuestionGame"
+            android:label="Number Question Game" />
+        <activity
+            android:name=".ShapeQuestionGame"
+            android:label="Shape Question Game" />
+        <activity
             android:name=".NumberGame"
             android:label="Numbers Game" />
         <activity

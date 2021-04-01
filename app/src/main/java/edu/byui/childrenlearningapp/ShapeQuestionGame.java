@@ -15,37 +15,39 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.byui.childrenlearningapp.Factories.ColorFactory;
+import edu.byui.childrenlearningapp.Factories.ShapeFactory;
 import edu.byui.childrenlearningapp.Models.A_Color;
+import edu.byui.childrenlearningapp.Models.A_Shape;
 
-public class ColorQuestionGame extends AppCompatActivity {
-    private A_Color selectedAnswer;
-    private ArrayList<A_Color> wrongAnswers = new ArrayList<>();
+public class ShapeQuestionGame extends AppCompatActivity {
+    private A_Shape selectedAnswer;
+    private ArrayList<A_Shape> wrongAnswers = new ArrayList<>();
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();
+        ArrayList<String> shapeList = ShapeFactory.getAllPossibleShapes();
         Random rand =  new Random();
-        Log.d("List",colorsList.toString());
-        String selectedColor = colorsList.get(rand.nextInt(colorsList.size()));
-        selectedAnswer = ColorFactory.getColor(selectedColor,this,true);
+        Log.d("List",shapeList.toString());
+        String selectedShape = shapeList.get(rand.nextInt(shapeList.size()));
+        selectedAnswer = ShapeFactory.getShape(selectedShape,this,true);
 
-        Log.d("color", "onCreate: selected color"+selectedColor +"  "+ "selected answer "+selectedAnswer);
+        Log.d("Shape", "onCreate: selected Shape "+selectedShape +"  "+ "selected answer "+selectedAnswer);
         assert selectedAnswer != null;
-        colorsList.remove(selectedAnswer.getColorName());
-        wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
-        wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
+        shapeList.remove(selectedAnswer.getShapeName());
+        wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
+        wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
         Log.d("wrong answers ",wrongAnswers.toString());
 
 
-        setContentView(R.layout.activity_color_question_game);
+        setContentView(R.layout.activity_shape_question_game);
 
-        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_color);
-        MediaPlayer color = MediaPlayer.create(this, selectedAnswer.getColorSoundRef());
+        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_shape);
+        MediaPlayer shape = MediaPlayer.create(this, selectedAnswer.getShapeSoundRef());
         info.start();
-        info.setNextMediaPlayer(color);
+        info.setNextMediaPlayer(shape);
 
         ImageButton button1;
         ImageButton button2;
@@ -53,7 +55,7 @@ public class ColorQuestionGame extends AppCompatActivity {
         Random randButton = new Random();
         int randIntButton = randButton.nextInt(3);
 
-        Log.i("ColorQuestionGame", "Random number "+ randIntButton);
+        Log.i("ShapeQuestionGame", "Random number "+ randIntButton);
 
         if(randIntButton ==1) {
             button1 = findViewById(R.id.answer1);
@@ -80,21 +82,21 @@ public class ColorQuestionGame extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent next = new Intent(ColorQuestionGame.this, ColorQuestionGame.class);
+                        Intent next = new Intent(ShapeQuestionGame.this, ShapeQuestionGame.class);
                         startActivity(next);
                     }
                 }, 2000); // Millisecond 1000 = 1 sec
 
             }
         });
-        button1.setImageResource(selectedAnswer.getColorImageRef());
+        button1.setImageResource(selectedAnswer.getShapeImageRef());
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 wrongAnswers.get(0).playWrongSound();
             }
         });
-        button2.setImageResource(wrongAnswers.get(0).getColorImageRef());
+        button2.setImageResource(wrongAnswers.get(0).getShapeImageRef());
 
 
         button3.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +105,7 @@ public class ColorQuestionGame extends AppCompatActivity {
                 wrongAnswers.get(1).playWrongSound();
             }
         });
-        button3.setImageResource(wrongAnswers.get(1).getColorImageRef());
+        button3.setImageResource(wrongAnswers.get(1).getShapeImageRef());
 
     }
 

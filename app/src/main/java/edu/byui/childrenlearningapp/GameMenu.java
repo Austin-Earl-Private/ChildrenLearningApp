@@ -36,11 +36,7 @@ public class GameMenu extends AppCompatActivity {
         setContentView(R.layout.activity_game_menu);
     }
 
-    public void startQuestionColorGame(View btlQuestionColor){
-        Log.d("testing","got to queation");
-        Intent questionGame = new Intent(this, ColorQuestionGame.class);
-        startActivity(questionGame);
-    }
+
     public void startLetterGame (View btnLetter){
         Intent letterGame = new Intent(this, LetterGame.class);
         startActivity(letterGame);
@@ -62,5 +58,31 @@ public class GameMenu extends AppCompatActivity {
     public void startShapeGame (View btnAnimal) {
         Intent shapeGame = new Intent(this, ShapeGame.class);
         startActivity(shapeGame);
+    }
+    public void GoToExtraGames(View btnExtra){
+        setContentView(R.layout.activity_extra_game_menu);
+    }
+    public void startQuestionAnimalGame(View btlQuestionColor){
+        Log.d("testing","got to Animal question");
+        Intent questionGame = new Intent(this, AnimalQuestionGame.class);
+        startActivity(questionGame);
+    }
+
+    public void startQuestionColorGame(View btlQuestionColor){
+        Log.d("testing","got to Color question");
+        Intent questionGame = new Intent(this, ColorQuestionGame.class);
+        startActivity(questionGame);
+    }
+
+    public void startQuestionNumberGame(View btlQuestionColor){
+        Log.d("testing","got to Number question");
+        Intent questionGame = new Intent(this, NumberQuestionGame.class);
+        startActivity(questionGame);
+    }
+
+    public void startQuestionShapeGame(View btlQuestionColor){
+        Log.d("testing","got to Shape question");
+        Intent questionGame = new Intent(this, ShapeQuestionGame.class);
+        startActivity(questionGame);
     }
 }
