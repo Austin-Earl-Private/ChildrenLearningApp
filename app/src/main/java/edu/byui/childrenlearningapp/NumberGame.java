@@ -75,6 +75,87 @@ public class NumberGame extends AppCompatActivity {
         MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_ten);
         numberSound.start();
     }
+    public void numberEleven(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_eleven);
+        numberSound.start();
+    }
+    public void numberTwelve(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twelve);
+        numberSound.start();
+    }
+    public void numberThirteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_thirteen);
+        numberSound.start();
+    }
+    public void numberFourteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_fourteen);
+        numberSound.start();
+    }
+    public void numberFifteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_fifteen);
+        numberSound.start();
+    }
+    public void numberSixteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_sixteen);
+        numberSound.start();
+    }
+    public void numberSeventeen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_seventeen);
+        numberSound.start();
+    }
+    public void numberEighteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_eighteen);
+        numberSound.start();
+    }
+    public void numberNineteen(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_nineteen);
+        numberSound.start();
+    }
+    public void numberTwenty(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twenty);
+        numberSound.start();
+    }
+    public void numberTwentyone(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentyone);
+        numberSound.start();
+    }
+    public void numberTwentytwo(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentytwo);
+        numberSound.start();
+    }
+    public void numberTwentythree(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentythree);
+        numberSound.start();
+    }
+    public void numberTwentyfour(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentyfour);
+        numberSound.start();
+    }
+    public void numberTwentyfive(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentyfive);
+        numberSound.start();
+    }
+    public void numberTwentysix(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentysix);
+        numberSound.start();
+    }
+    public void numberTwentyseven(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentyseven);
+        numberSound.start();
+    }
+    public void numberTwentyeight(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentyeight);
+        numberSound.start();
+    }
+    public void numberTwentynine(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_twentynine);
+        numberSound.start();
+    }
+    public void numberThirty(View btnOne){
+        MediaPlayer numberSound = MediaPlayer.create(this, R.raw.numbers_thirty);
+        numberSound.start();
+    }
+
 
     public void GoToMenu(View view) {
         Intent menuGame = new Intent(this, GameMenu.class);
