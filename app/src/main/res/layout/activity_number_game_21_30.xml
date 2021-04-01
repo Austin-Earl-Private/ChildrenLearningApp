@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberOne"
+                    android:onClick="numberTwentyone"
                     android:src="@drawable/numbers_21"
 
                     />
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberTwo"
+                    android:onClick="numberTwentytwo"
                     android:src="@drawable/numbers_22" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberThree"
+                    android:onClick="numberTwentythree"
                     android:src="@drawable/numbers_23" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberFour"
+                    android:onClick="numberTwentyfour"
                     android:src="@drawable/numbers_24" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberFive"
+                    android:onClick="numberTwentyfive"
                     android:src="@drawable/numbers_25" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -178,7 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberSix"
+                    android:onClick="numberTwentysix"
                     android:src="@drawable/numbers_26" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberSeven"
+                    android:onClick="numberTwentyseven"
                     android:src="@drawable/numbers_27" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -234,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberEight"
+                    android:onClick="numberTwentyeight"
                     android:src="@drawable/numbers_28" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -262,7 +262,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberNine"
+                    android:onClick="numberTwentynine"
                     android:src="@drawable/numbers_29" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -290,7 +290,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="numberTen"
+                    android:onClick="numberThirty"
                     android:src="@drawable/numbers_30" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
