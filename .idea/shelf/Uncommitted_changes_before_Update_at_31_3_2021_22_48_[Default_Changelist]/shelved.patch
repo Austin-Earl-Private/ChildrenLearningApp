@@ -1,0 +1,28 @@
+Index: app/src/main/res/layout/activity_game_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:onClick=\"startQuestionColorGame\"\r\n    tools:context=\".GameMenu\">\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnNumbers\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startNumberGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnLetters\"\r\n        app:srcCompat=\"@drawable/numbers_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnColor\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startColorGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnNumbers\"\r\n        app:srcCompat=\"@drawable/colors_button\" />\r\n    <!--<div>Icons made by <a href=\"https://www.freepik.com\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>-->\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnLetters\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startLetterGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@drawable/abc_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/imageButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startAnimalGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnColor\"\r\n        app:srcCompat=\"@drawable/animals_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/imageButton2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startShapeGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/imageButton\"\r\n        app:srcCompat=\"@drawable/shapes_button\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"96dp\"\r\n        android:layout_marginBottom=\"92dp\"\r\n        android:text=\"Question game color\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_game_menu.xml	(revision 5c81eba94b176257523f9e44c02949b4276f947f)
++++ app/src/main/res/layout/activity_game_menu.xml	(date 1617239967083)
+@@ -72,12 +72,15 @@
+         app:srcCompat="@drawable/shapes_button" />
+ 
+     <Button
+-        android:id="@+id/button"
++        android:id="@+id/btnQuestionColor"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="96dp"
+         android:layout_marginBottom="92dp"
+         android:text="Question game color"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintStart_toStartOf="parent" />
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
++        app:layout_constraintVertical_bias="1.0"
++        android:onClick="startQuestionColorGame"/>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
