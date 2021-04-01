@@ -78,4 +78,9 @@ public class Color extends A_Color {
     public String getColorName() {
         return this.colorName;
     }
+
+    @Override
+    public int getColorSoundRef() {
+        return soundRef;
+    }
 }

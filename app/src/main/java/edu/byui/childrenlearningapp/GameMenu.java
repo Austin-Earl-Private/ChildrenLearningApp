@@ -35,7 +35,10 @@ public class GameMenu extends AppCompatActivity {
         setContentView(R.layout.activity_game_menu);
     }
 
-
+    public void startQuestionColorGame(View btlQuestionColor){
+        Intent questionGame = new Intent(this, ColorQuestionGame.class);
+        startActivity(questionGame);
+    }
     public void startLetterGame (View btnLetter){
         Intent letterGame = new Intent(this, LetterGame.class);
         startActivity(letterGame);
