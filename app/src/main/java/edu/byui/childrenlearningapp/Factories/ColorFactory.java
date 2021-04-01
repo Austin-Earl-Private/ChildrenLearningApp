@@ -11,7 +11,7 @@ import edu.byui.childrenlearningapp.R;
 public class ColorFactory {
     public static A_Color getColor(String colorName, Context context, boolean iscorrect){
         String colorNameLower = colorName.toLowerCase();
-        switch (colorName){
+        switch (colorNameLower){
             case "red":
                 return new Color(colorName,context, R.raw.colors_red,iscorrect,R.drawable.colors_red_apple);
             case "blue":

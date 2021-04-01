@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -36,6 +37,7 @@ public class GameMenu extends AppCompatActivity {
     }
 
     public void startQuestionColorGame(View btlQuestionColor){
+        Log.d("testing","got to queation");
         Intent questionGame = new Intent(this, ColorQuestionGame.class);
         startActivity(questionGame);
     }

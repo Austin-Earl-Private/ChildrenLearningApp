@@ -66,6 +66,17 @@ public class Color extends A_Color {
     }
 
     @Override
+    public String toString() {
+        return "Color{" +
+                "colorName='" + colorName + '\'' +
+                ", contextWeakReference=" + contextWeakReference +
+                ", soundRef=" + soundRef +
+                ", isCorrect=" + isCorrect +
+                ", imgRef=" + imgRef +
+                '}';
+    }
+
+    @Override
     public void playColorSound() {
         if(contextWeakReference.get() == null){
             return;

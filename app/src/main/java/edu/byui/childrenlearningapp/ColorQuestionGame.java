@@ -3,6 +3,7 @@ package edu.byui.childrenlearningapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,16 @@ public class ColorQuestionGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();
         Random rand =  new Random();
-        selectedAnswer = ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,true);
+        Log.d("List",colorsList.toString());
+        String selectedColor = colorsList.get(rand.nextInt(colorsList.size()));
+        selectedAnswer = ColorFactory.getColor(selectedColor,this,true);
+
+        Log.d("color", "onCreate: selected color"+selectedColor +"  "+ "selected anwser "+selectedAnswer);
         assert selectedAnswer != null;
         colorsList.remove(selectedAnswer.getColorName());
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
+        Log.d("wrong anwswers ",wrongAnswers.toString());
 
 
 
@@ -41,6 +47,7 @@ public class ColorQuestionGame extends AppCompatActivity {
         MediaPlayer color = MediaPlayer.create(this, selectedAnswer.getColorSoundRef());
         info.start();
         info.setNextMediaPlayer(color);
+
 
     }
 
