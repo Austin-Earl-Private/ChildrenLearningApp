@@ -41,6 +41,10 @@
             android:name=".GameMenu"
             android:label="Game Menu" />
         <activity
+            android:name=".ExtraGameMenu"
+            android:label="Extra Games" />
+
+        <activity
             android:name=".MainActivity"
             android:label="Children Teaching">
             <intent-filter>

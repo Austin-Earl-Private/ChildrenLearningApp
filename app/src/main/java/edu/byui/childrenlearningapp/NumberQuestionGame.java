@@ -21,9 +21,6 @@ import edu.byui.childrenlearningapp.Models.A_Number;
 
 public class NumberQuestionGame extends AppCompatActivity {
     private A_Number selectedAnswer;
-    private ArrayList<A_Number> wrongAnswers = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +29,43 @@ public class NumberQuestionGame extends AppCompatActivity {
         setContentView(R.layout.activity_number_question_game);
         runGame();
 
+        ImageButton repeat = findViewById(R.id.btnSpeaker);
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer info = MediaPlayer.create(NumberQuestionGame.this, R.raw.quest_select_number);
+                MediaPlayer number = MediaPlayer.create(NumberQuestionGame.this, selectedAnswer.getNumberSoundRef());
+                info.start();
+                info.setNextMediaPlayer(number);
+                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                });
+                number.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
     }
 
 
 
     public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
+        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
+        startActivity(extraMenu);;
     }
 
     private void runGame(){
+
+        ArrayList<A_Number> wrongAnswers = new ArrayList<>();
         ArrayList<String> numberList = NumberFactory.getAllPossibleNumbers();
         Random rand =  new Random();
         Log.d("List",numberList.toString());
@@ -52,7 +76,14 @@ public class NumberQuestionGame extends AppCompatActivity {
         assert selectedAnswer != null;
         numberList.remove(selectedAnswer.getNumberName());
         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
+
         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
+        while(wrongAnswers.get(0).getNumberName().equals(wrongAnswers.get(1).getNumberName())){
+            Log.d("Repeated wrong answers: ", wrongAnswers.toString());
+            wrongAnswers.remove(1);
+            wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
+            Log.d("Changed wrong answers ",wrongAnswers.toString());
+        }
         Log.d("wrong answers ",wrongAnswers.toString());
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_number);
         MediaPlayer number = MediaPlayer.create(this, selectedAnswer.getNumberSoundRef());

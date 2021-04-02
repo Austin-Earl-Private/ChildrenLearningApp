@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -60,29 +59,9 @@ public class GameMenu extends AppCompatActivity {
         startActivity(shapeGame);
     }
     public void GoToExtraGames(View btnExtra){
-        setContentView(R.layout.activity_extra_game_menu);
-    }
-    public void startQuestionAnimalGame(View btlQuestionColor){
-        Log.d("testing","got to Animal question");
-        Intent questionGame = new Intent(this, AnimalQuestionGame.class);
-        startActivity(questionGame);
+
+        Intent extraGame = new Intent(this, ExtraGameMenu.class);
+        startActivity(extraGame);
     }
 
-    public void startQuestionColorGame(View btlQuestionColor){
-        Log.d("testing","got to Color question");
-        Intent questionGame = new Intent(this, ColorQuestionGame.class);
-        startActivity(questionGame);
-    }
-
-    public void startQuestionNumberGame(View btlQuestionColor){
-        Log.d("testing","got to Number question");
-        Intent questionGame = new Intent(this, NumberQuestionGame.class);
-        startActivity(questionGame);
-    }
-
-    public void startQuestionShapeGame(View btlQuestionColor){
-        Log.d("testing","got to Shape question");
-        Intent questionGame = new Intent(this, ShapeQuestionGame.class);
-        startActivity(questionGame);
-    }
 }
