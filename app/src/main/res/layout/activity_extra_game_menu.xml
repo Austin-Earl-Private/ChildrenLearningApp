@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameMenu">
+    tools:context=".ExtraGameMenu">
 
     <ImageButton
         android:id="@+id/btnNumbers"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@null"
-        android:onClick="startLetterGame"
+        android:onClick="startQuestionColorGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
