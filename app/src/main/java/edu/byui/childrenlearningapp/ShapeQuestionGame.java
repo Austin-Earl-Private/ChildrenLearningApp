@@ -28,6 +28,22 @@ public class ShapeQuestionGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        setContentView(R.layout.activity_shape_question_game);
+        runGame();
+
+    }
+
+
+
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
+
+    private void runGame(){
         ArrayList<String> shapeList = ShapeFactory.getAllPossibleShapes();
         Random rand =  new Random();
         Log.d("List",shapeList.toString());
@@ -40,9 +56,6 @@ public class ShapeQuestionGame extends AppCompatActivity {
         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
         Log.d("wrong answers ",wrongAnswers.toString());
-
-
-        setContentView(R.layout.activity_shape_question_game);
 
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_shape);
         MediaPlayer shape = MediaPlayer.create(this, selectedAnswer.getShapeSoundRef());
@@ -82,8 +95,9 @@ public class ShapeQuestionGame extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent next = new Intent(ShapeQuestionGame.this, ShapeQuestionGame.class);
-                        startActivity(next);
+                        //Intent next = new Intent(ShapeQuestionGame.this, ShapeQuestionGame.class);
+                        //startActivity(next);
+                        runGame();
                     }
                 }, 2000); // Millisecond 1000 = 1 sec
 
@@ -107,12 +121,5 @@ public class ShapeQuestionGame extends AppCompatActivity {
         });
         button3.setImageResource(wrongAnswers.get(1).getShapeImageRef());
 
-    }
-
-
-
-    public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
     }
 }

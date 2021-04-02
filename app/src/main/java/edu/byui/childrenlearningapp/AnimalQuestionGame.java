@@ -26,6 +26,22 @@ public class AnimalQuestionGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        setContentView(R.layout.activity_animal_question_game);
+        runGame();
+
+
+    }
+
+
+
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
+    private void runGame(){
         ArrayList<String> animalList = AnimalFactory.getAllPossibleAnimals();
         Random rand =  new Random();
         Log.d("List",animalList.toString());
@@ -38,9 +54,6 @@ public class AnimalQuestionGame extends AppCompatActivity {
         wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
         wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
         Log.d("wrong answers ",wrongAnswers.toString());
-
-
-        setContentView(R.layout.activity_animal_question_game);
 
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_animal);
         MediaPlayer animal = MediaPlayer.create(this, selectedAnswer.getAnimalSoundRef());
@@ -80,8 +93,7 @@ public class AnimalQuestionGame extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent next = new Intent(AnimalQuestionGame.this, AnimalQuestionGame.class);
-                        startActivity(next);
+                        runGame();
                     }
                 }, 2000); // Millisecond 1000 = 1 sec
 
@@ -104,13 +116,5 @@ public class AnimalQuestionGame extends AppCompatActivity {
             }
         });
         button3.setImageResource(wrongAnswers.get(1).getAnimalImageRef());
-
-    }
-
-
-
-    public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
     }
 }
