@@ -26,6 +26,21 @@ public class ColorQuestionGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_color_question_game);
+        runGame();
+
+
+    }
+
+
+
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
+
+    private void runGame(){
         ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();
         Random rand =  new Random();
         Log.d("List",colorsList.toString());
@@ -38,9 +53,6 @@ public class ColorQuestionGame extends AppCompatActivity {
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
         Log.d("wrong answers ",wrongAnswers.toString());
-
-
-        setContentView(R.layout.activity_color_question_game);
 
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_color);
         MediaPlayer color = MediaPlayer.create(this, selectedAnswer.getColorSoundRef());
@@ -80,8 +92,7 @@ public class ColorQuestionGame extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent next = new Intent(ColorQuestionGame.this, ColorQuestionGame.class);
-                        startActivity(next);
+                        runGame();
                     }
                 }, 2000); // Millisecond 1000 = 1 sec
 
@@ -104,13 +115,5 @@ public class ColorQuestionGame extends AppCompatActivity {
             }
         });
         button3.setImageResource(wrongAnswers.get(1).getColorImageRef());
-
-    }
-
-
-
-    public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
     }
 }

@@ -28,6 +28,20 @@ public class NumberQuestionGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_number_question_game);
+        runGame();
+
+    }
+
+
+
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
+
+    private void runGame(){
         ArrayList<String> numberList = NumberFactory.getAllPossibleNumbers();
         Random rand =  new Random();
         Log.d("List",numberList.toString());
@@ -40,10 +54,6 @@ public class NumberQuestionGame extends AppCompatActivity {
         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
         Log.d("wrong answers ",wrongAnswers.toString());
-
-
-        setContentView(R.layout.activity_number_question_game);
-
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_number);
         MediaPlayer number = MediaPlayer.create(this, selectedAnswer.getNumberSoundRef());
         info.start();
@@ -82,8 +92,7 @@ public class NumberQuestionGame extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent next = new Intent(NumberQuestionGame.this, NumberQuestionGame.class);
-                        startActivity(next);
+                        runGame();
                     }
                 }, 2000); // Millisecond 1000 = 1 sec
 
@@ -107,12 +116,5 @@ public class NumberQuestionGame extends AppCompatActivity {
         });
         button3.setImageResource(wrongAnswers.get(1).getNumberImageRef());
 
-    }
-
-
-
-    public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
     }
 }
