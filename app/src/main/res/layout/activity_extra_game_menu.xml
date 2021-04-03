@@ -6,82 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".ExtraGameMenu">
 
-    <ImageButton
-        android:id="@+id/btnNumbers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="startQuestionNumberGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLetters"
-        app:srcCompat="@drawable/numbers_button" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <ImageButton
-        android:id="@+id/btnColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="startQuestionColorGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNumbers"
-        app:srcCompat="@drawable/colors_button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="startQuestionNumberGame"
+                app:srcCompat="@drawable/numbers_button" />
+
+            <ImageButton
+                android:id="@+id/btnLetters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="startQuestionColorGame"
+                app:srcCompat="@drawable/abc_button" />
+
+            <ImageButton
+                android:id="@+id/btnColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="startQuestionColorGame"
+                app:srcCompat="@drawable/colors_button" />
+
+            <ImageButton
+                android:id="@+id/btnQuestionShape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="startQuestionShapeGame"
+                app:srcCompat="@drawable/shapes_button" />
+
+            <ImageButton
+                android:id="@+id/btnQuestionAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="startQuestionAnimalGame"
+                app:srcCompat="@drawable/animals_button" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:onClick="GoToMenu"
+                app:srcCompat="@drawable/button_back" />
+
+        </LinearLayout>
+    </ScrollView>
+
     <!--<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
-
-    <ImageButton
-        android:id="@+id/btnLetters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="startQuestionColorGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_button" />
-
-    <ImageButton
-        android:id="@+id/btnQuestionAnimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="startQuestionAnimalGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnColor"
-        app:srcCompat="@drawable/animals_button" />
-
-    <ImageButton
-        android:id="@+id/btnQuestionShape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="startQuestionShapeGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnQuestionAnimal"
-        app:srcCompat="@drawable/shapes_button" />
-
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:onClick="GoToMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnQuestionShape"
-        app:srcCompat="@drawable/button_back" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

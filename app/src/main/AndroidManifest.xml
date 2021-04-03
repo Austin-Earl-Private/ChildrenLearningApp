@@ -43,7 +43,8 @@
         <activity
             android:name=".ExtraGameMenu"
             android:label="Extra Games" />
-
+        <activity android:name=".Youtube"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".MainActivity"
             android:label="Children Teaching">
