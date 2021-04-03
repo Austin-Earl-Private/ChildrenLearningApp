@@ -63,5 +63,9 @@ public class GameMenu extends AppCompatActivity {
         Intent extraGame = new Intent(this, ExtraGameMenu.class);
         startActivity(extraGame);
     }
+    public void youtube(View vieew){
+        Intent video = new Intent(this, Youtube.class);
+        startActivity(video);
+    }
 
 }
