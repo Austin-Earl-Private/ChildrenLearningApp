@@ -11,7 +11,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class Youtube extends AppCompatActivity {
-    YouTubePlayerView player=
+    YouTubePlayerView player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
