@@ -64,8 +64,11 @@ import com.google.gson.Gson;
      public void onStart() {
 
         super.onStart();
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
+        SharedPreferences sharedPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
+        if(sharedPref.contains(NAME) && sharedPref.contains(LAST_NAME) && sharedPref.contains(AGE)) {
+            Intent menuGame = new Intent(this, GameMenu.class);
+            startActivity(menuGame);
+        }
     }
 
 
