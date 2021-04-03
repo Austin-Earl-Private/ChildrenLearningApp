@@ -24,7 +24,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@null"
                 android:onClick="startQuestionNumberGame"
-                app:srcCompat="@drawable/numbers_button" />
+                app:srcCompat="@drawable/numbers_button_questionmark" />
 
             <ImageButton
                 android:id="@+id/btnLetters"
@@ -34,7 +34,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@null"
                 android:onClick="youtube"
-                app:srcCompat="@drawable/abc_button" />
+                app:srcCompat="@drawable/abc_button_questionmark" />
 
             <ImageButton
                 android:id="@+id/btnColor"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@null"
                 android:onClick="startQuestionColorGame"
-                app:srcCompat="@drawable/colors_button" />
+                app:srcCompat="@drawable/colors_button_questionmark" />
 
             <ImageButton
                 android:id="@+id/btnQuestionShape"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@null"
                 android:onClick="startQuestionShapeGame"
-                app:srcCompat="@drawable/shapes_button" />
+                app:srcCompat="@drawable/shapes_button_questionmark" />
 
             <ImageButton
                 android:id="@+id/btnQuestionAnimal"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@null"
                 android:onClick="startQuestionAnimalGame"
-                app:srcCompat="@drawable/animals_button" />
+                app:srcCompat="@drawable/animals_button_questionmark" />
 
             <ImageButton
                 android:id="@+id/btnBack"

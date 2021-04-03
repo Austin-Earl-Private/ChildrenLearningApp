@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -20,6 +21,8 @@ public class Youtube extends AppCompatActivity {
 
 
         String id = getIntent().getStringExtra("youtube_video_id");
+        
+
 
         if(id != null && !id.isEmpty()){
             YouTubePlayerView player = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
