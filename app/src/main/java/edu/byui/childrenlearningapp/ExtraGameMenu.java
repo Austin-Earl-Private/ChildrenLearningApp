@@ -70,6 +70,8 @@ public class ExtraGameMenu extends AppCompatActivity {
 
     public void youtube(View btnLetters){
         Intent video = new Intent(this, Youtube.class);
+        video.putExtra("youtube_video_id","RUSCz41aDug");
         startActivity(video);
     }
+
 }
