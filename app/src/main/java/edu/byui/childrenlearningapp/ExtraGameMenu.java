@@ -1,6 +1,7 @@
 package edu.byui.childrenlearningapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,5 +66,10 @@ public class ExtraGameMenu extends AppCompatActivity {
     public void GoToMenu(View view) {
         Intent menuGame = new Intent(this, GameMenu.class);
         startActivity(menuGame);
+    }
+
+    public void youtube(View btnLetters){
+        Intent video = new Intent(this, Youtube.class);
+        startActivity(video);
     }
 }
