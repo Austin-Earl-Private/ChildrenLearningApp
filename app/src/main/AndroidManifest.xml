@@ -11,7 +11,7 @@
         android:theme="@style/Theme.ChildrenLearningApp">
         <activity
             android:name=".ShapeGame"
-            android:label="Shape Game" />
+            android:label="Shapes Game" />
         <activity android:name=".AnimalGame"
             android:label="Animals Game"
             />
