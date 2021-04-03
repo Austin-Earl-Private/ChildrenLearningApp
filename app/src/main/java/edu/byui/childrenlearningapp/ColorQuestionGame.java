@@ -36,17 +36,9 @@ public class ColorQuestionGame extends AppCompatActivity {
         repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer info = MediaPlayer.create(ColorQuestionGame.this, R.raw.quest_select_color);
+
                 MediaPlayer color = MediaPlayer.create(ColorQuestionGame.this, selectedAnswer.getColorSoundRef());
-                info.start();
-                info.setNextMediaPlayer(color);
-                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                    }
-                });
+                color.start();
                 color.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {

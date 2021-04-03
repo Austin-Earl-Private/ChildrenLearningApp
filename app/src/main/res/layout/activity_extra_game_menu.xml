@@ -46,7 +46,7 @@
         app:srcCompat="@drawable/abc_button" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnQuestionAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -59,7 +59,7 @@
         app:srcCompat="@drawable/animals_button" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btnQuestionShape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -67,7 +67,21 @@
         android:onClick="startQuestionShapeGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/btnQuestionAnimal"
         app:srcCompat="@drawable/shapes_button" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:onClick="GoToMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnQuestionShape"
+        app:srcCompat="@drawable/button_back" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

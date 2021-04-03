@@ -36,17 +36,10 @@ public class AnimalQuestionGame extends AppCompatActivity {
         repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer info = MediaPlayer.create(AnimalQuestionGame.this, R.raw.quest_select_animal);
+
                 MediaPlayer animal = MediaPlayer.create(AnimalQuestionGame.this, selectedAnswer.getAnimalSoundRef());
-                info.start();
-                info.setNextMediaPlayer(animal);
-                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                    }
-                });
+                animal.start();
+
                 animal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {

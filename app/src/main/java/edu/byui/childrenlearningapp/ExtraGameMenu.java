@@ -62,4 +62,8 @@ public class ExtraGameMenu extends AppCompatActivity {
         Intent questionGame = new Intent(this, ShapeQuestionGame.class);
         startActivity(questionGame);
     }
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
 }

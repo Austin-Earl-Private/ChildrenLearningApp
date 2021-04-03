@@ -34,17 +34,9 @@ public class ShapeQuestionGame extends AppCompatActivity {
         repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer info = MediaPlayer.create(ShapeQuestionGame.this, R.raw.quest_select_shape);
+
                 MediaPlayer shape = MediaPlayer.create(ShapeQuestionGame.this, selectedAnswer.getShapeSoundRef());
-                info.start();
-                info.setNextMediaPlayer(shape);
-                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                    }
-                });
+                shape.start();
                 shape.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {

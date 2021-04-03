@@ -34,17 +34,9 @@ public class NumberQuestionGame extends AppCompatActivity {
         repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer info = MediaPlayer.create(NumberQuestionGame.this, R.raw.quest_select_number);
+
                 MediaPlayer number = MediaPlayer.create(NumberQuestionGame.this, selectedAnswer.getNumberSoundRef());
-                info.start();
-                info.setNextMediaPlayer(number);
-                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        mediaPlayer.release();
-                    }
-                });
+                number.start();
                 number.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {

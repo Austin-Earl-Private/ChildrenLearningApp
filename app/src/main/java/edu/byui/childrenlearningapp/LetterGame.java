@@ -2,6 +2,7 @@ package edu.byui.childrenlearningapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -107,6 +108,10 @@ public class LetterGame extends AppCompatActivity {
 
 
 
+    }
+    public void GoToMenu(View view) {
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
     }
 
     public ImageButton getLetter(String charName, ImageButton letterImage){
