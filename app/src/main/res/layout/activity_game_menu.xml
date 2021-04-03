@@ -74,8 +74,7 @@
                 android:id="@+id/imageButton3"
                 android:layout_width="96dp"
                 android:layout_height="109dp"
-                android:layout_gravity="fill"
-                android:layout_marginStart="158dp"
+                android:layout_gravity="center"
                 android:background="@null"
                 android:onClick="GoToExtraGames"
                 app:srcCompat="@drawable/question_game" />
