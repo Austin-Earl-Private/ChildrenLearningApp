@@ -10,13 +10,13 @@
         android:id="@+id/horizontalScrollViewName"
         android:layout_width="690dp"
         android:layout_height="300px"
-        android:layout_marginTop="5dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/lettersViewName"
@@ -31,12 +31,13 @@
         android:layout_width="690dp"
         android:layout_height="300px"
         android:layout_marginTop="5dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewName"
-        app:layout_constraintVertical_bias="0.138">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/lettersViewLast"
