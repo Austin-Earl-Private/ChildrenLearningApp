@@ -1,0 +1,393 @@
+Index: app/src/main/java/edu/byui/childrenlearningapp/LettersVowelsVideo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/LettersVowelsVideo.java	(date 1617409429313)
++++ app/src/main/java/edu/byui/childrenlearningapp/LettersVowelsVideo.java	(date 1617409429313)
+@@ -0,0 +1,172 @@
++package edu.byui.childrenlearningapp;
++
++import android.annotation.SuppressLint;
++
++import androidx.appcompat.app.ActionBar;
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++import android.os.Handler;
++import android.view.MotionEvent;
++import android.view.View;
++
++/**
++ * An example full-screen activity that shows and hides the system UI (i.e.
++ * status bar and navigation/system bar) with user interaction.
++ */
++public class LettersVowelsVideo extends AppCompatActivity {
++    /**
++     * Whether or not the system UI should be auto-hidden after
++     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
++     */
++    private static final boolean AUTO_HIDE = true;
++
++    /**
++     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
++     * user interaction before hiding the system UI.
++     */
++    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
++
++    /**
++     * Some older devices needs a small delay between UI widget updates
++     * and a change of the status and navigation bar.
++     */
++    private static final int UI_ANIMATION_DELAY = 300;
++    private final Handler mHideHandler = new Handler();
++    private View mContentView;
++    private final Runnable mHidePart2Runnable = new Runnable() {
++        @SuppressLint("InlinedApi")
++        @Override
++        public void run() {
++            // Delayed removal of status and navigation bar
++
++            // Note that some of these constants are new as of API 16 (Jelly Bean)
++            // and API 19 (KitKat). It is safe to use them, as they are inlined
++            // at compile-time and do nothing on earlier devices.
++            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
++                    | View.SYSTEM_UI_FLAG_FULLSCREEN
++                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
++                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
++                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
++                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
++        }
++    };
++    private View mControlsView;
++    private final Runnable mShowPart2Runnable = new Runnable() {
++        @Override
++        public void run() {
++            // Delayed display of UI elements
++            ActionBar actionBar = getSupportActionBar();
++            if (actionBar != null) {
++                actionBar.show();
++            }
++            mControlsView.setVisibility(View.VISIBLE);
++        }
++    };
++    private boolean mVisible;
++    private final Runnable mHideRunnable = new Runnable() {
++        @Override
++        public void run() {
++            hide();
++        }
++    };
++    /**
++     * Touch listener to use for in-layout UI controls to delay hiding the
++     * system UI. This is to prevent the jarring behavior of controls going away
++     * while interacting with activity UI.
++     */
++    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
++        @Override
++        public boolean onTouch(View view, MotionEvent motionEvent) {
++            switch (motionEvent.getAction()) {
++                case MotionEvent.ACTION_DOWN:
++                    if (AUTO_HIDE) {
++                        delayedHide(AUTO_HIDE_DELAY_MILLIS);
++                    }
++                    break;
++                case MotionEvent.ACTION_UP:
++                    view.performClick();
++                    break;
++                default:
++                    break;
++            }
++            return false;
++        }
++    };
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        setContentView(R.layout.activity_letters_vowels_video);
++
++        mVisible = true;
++        mControlsView = findViewById(R.id.fullscreen_content_controls);
++        mContentView = findViewById(R.id.fullscreen_content);
++
++        // Set up the user interaction to manually show or hide the system UI.
++        mContentView.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                toggle();
++            }
++        });
++
++        // Upon interacting with UI controls, delay any scheduled hide()
++        // operations to prevent the jarring behavior of controls going away
++        // while interacting with the UI.
++        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
++    }
++
++    @Override
++    protected void onPostCreate(Bundle savedInstanceState) {
++        super.onPostCreate(savedInstanceState);
++
++        // Trigger the initial hide() shortly after the activity has been
++        // created, to briefly hint to the user that UI controls
++        // are available.
++        delayedHide(100);
++    }
++
++    private void toggle() {
++        if (mVisible) {
++            hide();
++        } else {
++            show();
++        }
++    }
++
++    private void hide() {
++        // Hide UI first
++        ActionBar actionBar = getSupportActionBar();
++        if (actionBar != null) {
++            actionBar.hide();
++        }
++        mControlsView.setVisibility(View.GONE);
++        mVisible = false;
++
++        // Schedule a runnable to remove the status and navigation bar after a delay
++        mHideHandler.removeCallbacks(mShowPart2Runnable);
++        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
++    }
++
++    private void show() {
++        // Show the system bar
++        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
++                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
++        mVisible = true;
++
++        // Schedule a runnable to display UI elements after a delay
++        mHideHandler.removeCallbacks(mHidePart2Runnable);
++        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
++    }
++
++    /**
++     * Schedules a call to hide() in delay milliseconds, canceling any
++     * previously scheduled calls.
++     */
++    private void delayedHide(int delayMillis) {
++        mHideHandler.removeCallbacks(mHideRunnable);
++        mHideHandler.postDelayed(mHideRunnable, delayMillis);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(date 1617409428918)
++++ app/src/main/res/values/styles.xml	(date 1617409428918)
+@@ -0,0 +1,11 @@
++<resources>
++
++    <style name="Widget.Theme.ChildrenLearningApp.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
++        <item name="android:background">@color/black_overlay</item>
++    </style>
++
++    <style name="Widget.Theme.ChildrenLearningApp.ButtonBar.Fullscreen" parent="">
++        <item name="android:background">@color/black_overlay</item>
++        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
++    </style>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">ChildrenLearningApp</string>\r\n    <string name=\"set_data\">Set Data</string>\r\n    <string name=\"title_activity_first_login\">FirstLogin</string>\r\n    <!-- Strings used for fragments for navigation -->\r\n    <string name=\"first_fragment_label\">First Fragment</string>\r\n    <string name=\"second_fragment_label\">Second Fragment</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"previous\">Previous</string>\r\n\r\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\r\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\r\n    <string name=\"let_s_begin\">Let\\'s begin!</string>\r\n    <string name=\"welcome_to_children_learning\">Welcome to Children Learning!</string>\r\n    <string name=\"name\">Name</string>\r\n    <string name=\"please_enter_your_child_s_name_and_age\">Please enter your child\\'s name and age.</string>\r\n    <string name=\"age\">Age</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision cb934dd6556b40560afc82b2154e38011fd1ee44)
++++ app/src/main/res/values/strings.xml	(date 1617409428604)
+@@ -15,4 +15,7 @@
+     <string name="name">Name</string>
+     <string name="please_enter_your_child_s_name_and_age">Please enter your child\'s name and age.</string>
+     <string name="age">Age</string>
++    <string name="title_activity_letters_vowels_video">FullscreenActivity</string>
++    <string name="dummy_button">Dummy Button</string>
++    <string name="dummy_content">DUMMY\nCONTENT</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <!-- Base application theme. -->\r\n    <style name=\"Theme.ChildrenLearningApp\" parent=\"Theme.MaterialComponents.DayNight.DarkActionBar\">\r\n        <!-- Primary brand color. -->\r\n        <item name=\"colorPrimary\">@color/purple_200</item>\r\n        <item name=\"colorPrimaryVariant\">@color/purple_700</item>\r\n        <item name=\"colorOnPrimary\">@color/black</item>\r\n        <!-- Secondary brand color. -->\r\n        <item name=\"colorSecondary\">@color/teal_200</item>\r\n        <item name=\"colorSecondaryVariant\">@color/teal_200</item>\r\n        <item name=\"colorOnSecondary\">@color/black</item>\r\n        <!-- Status bar color. -->\r\n        <item name=\"android:statusBarColor\" tools:targetApi=\"l\">?attr/colorPrimaryVariant</item>\r\n        <!-- Customize your theme here. -->\r\n    </style>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values-night/themes.xml	(revision cb934dd6556b40560afc82b2154e38011fd1ee44)
++++ app/src/main/res/values-night/themes.xml	(date 1617409428963)
+@@ -13,4 +13,9 @@
+         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+         <!-- Customize your theme here. -->
+     </style>
++
++    <style name="ThemeOverlay.ChildrenLearningApp.FullscreenContainer" parent="">
++        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
++        <item name="fullscreenTextColor">@color/light_blue_A400</item>
++    </style>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_letters_vowels_video.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_letters_vowels_video.xml	(date 1617409429046)
++++ app/src/main/res/layout/activity_letters_vowels_video.xml	(date 1617409429046)
+@@ -0,0 +1,51 @@
++<?xml version="1.0" encoding="utf-8"?>
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="?attr/fullscreenBackgroundColor"
++    android:theme="@style/ThemeOverlay.ChildrenLearningApp.FullscreenContainer"
++    tools:context=".LettersVowelsVideo">
++
++    <!-- The primary full-screen view. This can be replaced with whatever view
++         is needed to present your content, e.g. VideoView, SurfaceView,
++         TextureView, etc. -->
++    <TextView
++        android:id="@+id/fullscreen_content"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:gravity="center"
++        android:keepScreenOn="true"
++        android:text="@string/dummy_content"
++        android:textColor="?attr/fullscreenTextColor"
++        android:textSize="50sp"
++        android:textStyle="bold" />
++
++    <!-- This FrameLayout insets its children based on system windows using
++         android:fitsSystemWindows. -->
++    <FrameLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:fitsSystemWindows="true">
++
++        <LinearLayout
++            android:id="@+id/fullscreen_content_controls"
++            style="@style/Widget.Theme.ChildrenLearningApp.ButtonBar.Fullscreen"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_gravity="bottom|center_horizontal"
++            android:orientation="horizontal"
++            tools:ignore="UselessParent">
++
++            <Button
++                android:id="@+id/dummy_button"
++                style="?android:attr/buttonBarButtonStyle"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_weight="1"
++                android:text="@string/dummy_button" />
++
++        </LinearLayout>
++    </FrameLayout>
++
++</FrameLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <!-- Base application theme. -->\r\n    <style name=\"Theme.ChildrenLearningApp\" parent=\"Theme.MaterialComponents.DayNight.DarkActionBar\">\r\n        <!-- Primary brand color. -->\r\n        <item name=\"colorPrimary\">@color/purple_500</item>\r\n        <item name=\"colorPrimaryVariant\">@color/purple_700</item>\r\n        <item name=\"colorOnPrimary\">@color/white</item>\r\n        <!-- Secondary brand color. -->\r\n        <item name=\"colorSecondary\">@color/teal_200</item>\r\n        <item name=\"colorSecondaryVariant\">@color/teal_700</item>\r\n        <item name=\"colorOnSecondary\">@color/black</item>\r\n        <!-- Status bar color. -->\r\n        <item name=\"android:statusBarColor\" tools:targetApi=\"l\">?attr/colorPrimaryVariant</item>\r\n        <!-- Customize your theme here. -->\r\n    </style>\r\n\r\n    <style name=\"Theme.ChildrenLearningApp.NoActionBar\">\r\n        <item name=\"windowActionBar\">false</item>\r\n        <item name=\"windowNoTitle\">true</item>\r\n    </style>\r\n\r\n    <style name=\"Theme.ChildrenLearningApp.AppBarOverlay\" parent=\"ThemeOverlay.AppCompat.Dark.ActionBar\" />\r\n\r\n    <style name=\"Theme.ChildrenLearningApp.PopupOverlay\" parent=\"ThemeOverlay.AppCompat.Light\" />\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/themes.xml	(revision cb934dd6556b40560afc82b2154e38011fd1ee44)
++++ app/src/main/res/values/themes.xml	(date 1617409428942)
+@@ -22,4 +22,17 @@
+     <style name="Theme.ChildrenLearningApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+ 
+     <style name="Theme.ChildrenLearningApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
++
++    <style name="Theme.ChildrenLearningApp.Fullscreen" parent="Theme.ChildrenLearningApp">
++        <item name="android:actionBarStyle">
++            @style/Widget.Theme.ChildrenLearningApp.ActionBar.Fullscreen
++        </item>
++        <item name="android:windowActionBarOverlay">true</item>
++        <item name="android:windowBackground">@null</item>
++    </style>
++
++    <style name="ThemeOverlay.ChildrenLearningApp.FullscreenContainer" parent="">
++        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
++        <item name="fullscreenTextColor">@color/light_blue_A200</item>
++    </style>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"purple_200\">#FFBB86FC</color>\r\n    <color name=\"purple_500\">#FF6200EE</color>\r\n    <color name=\"purple_700\">#FF3700B3</color>\r\n    <color name=\"teal_200\">#FF03DAC5</color>\r\n    <color name=\"teal_700\">#FF018786</color>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision cb934dd6556b40560afc82b2154e38011fd1ee44)
++++ app/src/main/res/values/colors.xml	(date 1617409428251)
+@@ -7,4 +7,9 @@
+     <color name="teal_700">#FF018786</color>
+     <color name="black">#FF000000</color>
+     <color name="white">#FFFFFFFF</color>
++    <color name="light_blue_600">#FF039BE5</color>
++    <color name="light_blue_900">#FF01579B</color>
++    <color name="light_blue_A200">#FF40C4FF</color>
++    <color name="light_blue_A400">#FF00B0FF</color>
++    <color name="black_overlay">#66000000</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/attrs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/attrs.xml	(date 1617409428084)
++++ app/src/main/res/values/attrs.xml	(date 1617409428084)
+@@ -0,0 +1,6 @@
++<resources>
++    <declare-styleable name="FullscreenAttrs">
++        <attr name="fullscreenBackgroundColor" format="color" />
++        <attr name="fullscreenTextColor" format="color" />
++    </declare-styleable>
++</resources>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.byui.childrenlearningapp\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.ChildrenLearningApp\">\r\n        <activity android:name=\".ShapeGame\"></activity>\r\n        <activity android:name=\".AnimalGame\" />\r\n        <activity\r\n            android:name=\".ColorGame\"\r\n            android:label=\"Colors Game\" />\r\n        <activity\r\n            android:name=\".ColorQuestionGame\"\r\n            android:label=\"Color Question Game\" />\r\n        <activity\r\n            android:name=\".AnimalQuestionGame\"\r\n            android:label=\"Animal Question Game\" />\r\n        <activity\r\n            android:name=\".NumberQuestionGame\"\r\n            android:label=\"Number Question Game\" />\r\n        <activity\r\n            android:name=\".ShapeQuestionGame\"\r\n            android:label=\"Shape Question Game\" />\r\n        <activity\r\n            android:name=\".NumberGame\"\r\n            android:label=\"Numbers Game\" />\r\n        <activity\r\n            android:name=\".LetterGame\"\r\n            android:label=\"Letters Game\"\r\n            android:screenOrientation=\"landscape\" />\r\n        <activity\r\n            android:name=\".FirstLogin\"\r\n            android:label=\"Parent Area\"\r\n            android:theme=\"@style/Theme.ChildrenLearningApp.NoActionBar\" />\r\n        <activity\r\n            android:name=\".GameMenu\"\r\n            android:label=\"Game Menu\" />\r\n        <activity\r\n            android:name=\".ExtraGameMenu\"\r\n            android:label=\"Extra Games\" />\r\n\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:label=\"Children Teaching\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision cb934dd6556b40560afc82b2154e38011fd1ee44)
++++ app/src/main/AndroidManifest.xml	(date 1617409428793)
+@@ -9,7 +9,12 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.ChildrenLearningApp">
+-        <activity android:name=".ShapeGame"></activity>
++        <activity
++            android:name=".LettersVowelsVideo"
++            android:configChanges="orientation|keyboardHidden|screenSize"
++            android:label="@string/title_activity_letters_vowels_video"
++            android:theme="@style/Theme.ChildrenLearningApp.Fullscreen"></activity>
++        <activity android:name=".ShapeGame" />
+         <activity android:name=".AnimalGame" />
+         <activity
+             android:name=".ColorGame"
+@@ -43,7 +48,6 @@
+         <activity
+             android:name=".ExtraGameMenu"
+             android:label="Extra Games" />
+-
+         <activity
+             android:name=".MainActivity"
+             android:label="Children Teaching">
