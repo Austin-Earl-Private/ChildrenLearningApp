@@ -5,12 +5,16 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Children Learning Games"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChildrenLearningApp">
-        <activity android:name=".ShapeGame"></activity>
-        <activity android:name=".AnimalGame" />
+        <activity
+            android:name=".ShapeGame"
+            android:label="Shape Game" />
+        <activity android:name=".AnimalGame"
+            android:label="Animals Game"
+            />
         <activity
             android:name=".ColorGame"
             android:label="Colors Game" />

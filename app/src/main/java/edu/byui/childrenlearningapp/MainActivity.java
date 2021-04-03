@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 
  /**
@@ -58,6 +57,17 @@ import com.google.gson.Gson;
     public void GoToMenu(View btnMenu){
         Intent menuGame = new Intent(this, GameMenu.class);
         startActivity(menuGame);
+    }
+
+    @Override
+     public void onStart() {
+
+        super.onStart();
+        SharedPreferences sharedPref = getSharedPreferences(MainActivity.PREFERENCES, Context.MODE_PRIVATE);
+        if(sharedPref.contains(NAME) && sharedPref.contains(LAST_NAME) && sharedPref.contains(AGE)) {
+            Intent menuGame = new Intent(this, GameMenu.class);
+            startActivity(menuGame);
+        }
     }
 
 
