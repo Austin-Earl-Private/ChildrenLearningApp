@@ -60,5 +60,13 @@ import com.google.gson.Gson;
         startActivity(menuGame);
     }
 
+    @Override
+     public void onStart() {
+
+        super.onStart();
+        Intent menuGame = new Intent(this, GameMenu.class);
+        startActivity(menuGame);
+    }
+
 
 }
