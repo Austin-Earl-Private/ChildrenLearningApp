@@ -19,7 +19,6 @@ import edu.byui.childrenlearningapp.Models.A_Animal;
 
 public class AnimalQuestionGame extends AppCompatActivity {
     private A_Animal selectedAnswer;
-    private ArrayList<A_Animal> wrongAnswers = new ArrayList<>();
 
 
 
@@ -32,16 +31,37 @@ public class AnimalQuestionGame extends AppCompatActivity {
         setContentView(R.layout.activity_animal_question_game);
         runGame();
 
+        ImageButton repeat = findViewById(R.id.btnSpeaker);
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MediaPlayer animal = MediaPlayer.create(AnimalQuestionGame.this, selectedAnswer.getAnimalSoundRef());
+                animal.start();
+
+                animal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
+
 
     }
 
 
 
     public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
+        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
+        startActivity(extraMenu);
     }
     private void runGame(){
+
+        ArrayList<A_Animal> wrongAnswers = new ArrayList<>();
         ArrayList<String> animalList = AnimalFactory.getAllPossibleAnimals();
         Random rand =  new Random();
         Log.d("List",animalList.toString());
@@ -50,15 +70,39 @@ public class AnimalQuestionGame extends AppCompatActivity {
 
         Log.d("Animal", "onCreate: selected Animal"+selectedAnimal +"  "+ "selected answer "+selectedAnswer);
         assert selectedAnswer != null;
+
         animalList.remove(selectedAnswer.getAnimalName());
+        Log.d("List",animalList.toString());
+
         wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
+
         wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
+        while(wrongAnswers.get(0).getAnimalName().equals(wrongAnswers.get(1).getAnimalName())){
+            Log.d("Repeated wrong answers ",wrongAnswers.toString());
+            wrongAnswers.remove(1);
+            wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
+            Log.d("Changed wrong answers ",wrongAnswers.toString());
+        }
         Log.d("wrong answers ",wrongAnswers.toString());
 
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_animal);
         MediaPlayer animal = MediaPlayer.create(this, selectedAnswer.getAnimalSoundRef());
         info.start();
         info.setNextMediaPlayer(animal);
+        info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
+        animal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+            }
+        });
 
         ImageButton button1;
         ImageButton button2;

@@ -1,0 +1,562 @@
+Index: app/src/main/res/layout/activity_animal_question_game.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:onClick=\"GoToMenu\">\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/answer1\"\r\n        android:layout_width=\"103dp\"\r\n        android:layout_height=\"108dp\"\r\n        android:layout_marginTop=\"236dp\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/answer2\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView3\"\r\n        tools:srcCompat=\"@tools:sample/avatars\"\r\n        android:background=\"@null\"/>\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/answer2\"\r\n        android:layout_width=\"103dp\"\r\n        android:layout_height=\"108dp\"\r\n        android:layout_marginTop=\"236dp\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/answer3\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/answer1\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView3\"\r\n        tools:srcCompat=\"@tools:sample/avatars\"\r\n        android:background=\"@null\"/>\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/answer3\"\r\n        android:layout_width=\"103dp\"\r\n        android:layout_height=\"108dp\"\r\n        android:layout_marginTop=\"335dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/answer2\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:srcCompat=\"@tools:sample/avatars\"\r\n        android:background=\"@null\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView3\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"127dp\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:text=\"Choose the correct color.\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/button2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"26dp\"\r\n        android:layout_marginBottom=\"16dp\"\r\n        android:onClick=\"GoToMenu\"\r\n        android:text=\"Back\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_animal_question_game.xml	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/res/layout/activity_animal_question_game.xml	(date 1617336068867)
+@@ -10,45 +10,44 @@
+         android:id="@+id/answer1"
+         android:layout_width="103dp"
+         android:layout_height="108dp"
+-        android:layout_marginTop="236dp"
++        android:layout_marginTop="300dp"
++        android:background="@null"
+         app:layout_constraintEnd_toStartOf="@+id/answer2"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+-        tools:srcCompat="@tools:sample/avatars"
+-        android:background="@null"/>
++        app:layout_constraintTop_toTopOf="parent"
++        tools:srcCompat="@tools:sample/avatars" />
+ 
+     <ImageButton
+         android:id="@+id/answer2"
+         android:layout_width="103dp"
+         android:layout_height="108dp"
+-        android:layout_marginTop="236dp"
++        android:layout_marginTop="300dp"
++        android:background="@null"
+         app:layout_constraintEnd_toStartOf="@+id/answer3"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toEndOf="@+id/answer1"
+-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+-        tools:srcCompat="@tools:sample/avatars"
+-        android:background="@null"/>
++        app:layout_constraintTop_toTopOf="parent"
++        tools:srcCompat="@tools:sample/avatars" />
+ 
+     <ImageButton
+         android:id="@+id/answer3"
+         android:layout_width="103dp"
+         android:layout_height="108dp"
+-        android:layout_marginTop="335dp"
++        android:layout_marginTop="300dp"
++        android:background="@null"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toEndOf="@+id/answer2"
+         app:layout_constraintTop_toTopOf="parent"
+-        tools:srcCompat="@tools:sample/avatars"
+-        android:background="@null"/>
++        tools:srcCompat="@tools:sample/avatars" />
+ 
+-    <TextView
+-        android:id="@+id/textView3"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="127dp"
+-        android:layout_marginTop="80dp"
+-        android:text="Choose the correct color."
++    <ImageButton
++        android:id="@+id/btnSpeaker"
++        android:layout_width="100dp"
++        android:layout_height="100dp"
++        android:layout_marginStart="156dp"
++        android:layout_marginTop="76dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+Index: app/src/main/res/layout/activity_extra_game_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:onClick=\"startQuestionColorGame\"\r\n    tools:context=\".GameMenu\">\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnNumbers\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startQuestionNumberGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnLetters\"\r\n        app:srcCompat=\"@drawable/numbers_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnColor\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startQuestionColorGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnNumbers\"\r\n        app:srcCompat=\"@drawable/colors_button\" />\r\n    <!--<div>Icons made by <a href=\"https://www.freepik.com\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>-->\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnLetters\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startLetterGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@drawable/abc_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/imageButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startQuestionAnimalGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnColor\"\r\n        app:srcCompat=\"@drawable/animals_button\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/imageButton2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:background=\"@null\"\r\n        android:onClick=\"startQuestionShapeGame\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/imageButton\"\r\n        app:srcCompat=\"@drawable/shapes_button\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnQuestionColor\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"96dp\"\r\n        android:layout_marginBottom=\"92dp\"\r\n        android:text=\"Question game color\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/imageButton2\"\r\n        app:layout_constraintVertical_bias=\"1.0\"\r\n        android:onClick=\"startQuestionColorGame\"/>\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_extra_game_menu.xml	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/res/layout/activity_extra_game_menu.xml	(date 1617327944797)
+@@ -71,16 +71,4 @@
+         app:layout_constraintTop_toBottomOf="@+id/imageButton"
+         app:srcCompat="@drawable/shapes_button" />
+ 
+-    <Button
+-        android:id="@+id/btnQuestionColor"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="96dp"
+-        android:layout_marginBottom="92dp"
+-        android:text="Question game color"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+-        app:layout_constraintVertical_bias="1.0"
+-        android:onClick="startQuestionColorGame"/>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/edu/byui/childrenlearningapp/ColorQuestionGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport android.content.Intent;\r\nimport android.media.MediaPlayer;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Random;\r\n\r\nimport edu.byui.childrenlearningapp.Factories.ColorFactory;\r\nimport edu.byui.childrenlearningapp.Models.A_Color;\r\n\r\npublic class ColorQuestionGame extends AppCompatActivity {\r\n    private A_Color selectedAnswer;\r\n    private ArrayList<A_Color> wrongAnswers = new ArrayList<>();\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        setContentView(R.layout.activity_color_question_game);\r\n        runGame();\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public void GoToMenu(View view) {\r\n        Intent menuGame = new Intent(this, GameMenu.class);\r\n        startActivity(menuGame);\r\n    }\r\n\r\n    private void runGame(){\r\n        ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();\r\n        Random rand =  new Random();\r\n        Log.d(\"List\",colorsList.toString());\r\n        String selectedColor = colorsList.get(rand.nextInt(colorsList.size()));\r\n        selectedAnswer = ColorFactory.getColor(selectedColor,this,true);\r\n\r\n        Log.d(\"color\", \"onCreate: selected color\"+selectedColor +\"  \"+ \"selected answer \"+selectedAnswer);\r\n        assert selectedAnswer != null;\r\n        colorsList.remove(selectedAnswer.getColorName());\r\n        wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));\r\n        wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));\r\n        Log.d(\"wrong answers \",wrongAnswers.toString());\r\n\r\n        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_color);\r\n        MediaPlayer color = MediaPlayer.create(this, selectedAnswer.getColorSoundRef());\r\n        info.start();\r\n        info.setNextMediaPlayer(color);\r\n\r\n        ImageButton button1;\r\n        ImageButton button2;\r\n        ImageButton button3;\r\n        Random randButton = new Random();\r\n        int randIntButton = randButton.nextInt(3);\r\n\r\n        Log.i(\"ColorQuestionGame\", \"Random number \"+ randIntButton);\r\n\r\n        if(randIntButton ==1) {\r\n            button1 = findViewById(R.id.answer1);\r\n            button2 = findViewById(R.id.answer2);\r\n            button3 = findViewById(R.id.answer3);\r\n        }\r\n        else if(randIntButton ==2){\r\n            button1 = findViewById(R.id.answer2);\r\n            button2 = findViewById(R.id.answer3);\r\n            button3 = findViewById(R.id.answer1);\r\n        }\r\n        else {\r\n            button1 = findViewById(R.id.answer3);\r\n            button2 = findViewById(R.id.answer1);\r\n            button3 = findViewById(R.id.answer2);\r\n        }\r\n\r\n\r\n        button1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                selectedAnswer.playCorrectSound();\r\n                //Move to next game or Correct answer\r\n                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {\r\n                    @Override\r\n                    public void run() {\r\n                        runGame();\r\n                    }\r\n                }, 2000); // Millisecond 1000 = 1 sec\r\n\r\n            }\r\n        });\r\n        button1.setImageResource(selectedAnswer.getColorImageRef());\r\n        button2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(0).playWrongSound();\r\n            }\r\n        });\r\n        button2.setImageResource(wrongAnswers.get(0).getColorImageRef());\r\n\r\n\r\n        button3.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(1).playWrongSound();\r\n            }\r\n        });\r\n        button3.setImageResource(wrongAnswers.get(1).getColorImageRef());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/ColorQuestionGame.java	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/java/edu/byui/childrenlearningapp/ColorQuestionGame.java	(date 1617337055414)
+@@ -14,12 +14,13 @@
+ import java.util.ArrayList;
+ import java.util.Random;
+ 
++import edu.byui.childrenlearningapp.Factories.AnimalFactory;
+ import edu.byui.childrenlearningapp.Factories.ColorFactory;
+ import edu.byui.childrenlearningapp.Models.A_Color;
++import edu.byui.childrenlearningapp.Models.Color;
+ 
+ public class ColorQuestionGame extends AppCompatActivity {
+     private A_Color selectedAnswer;
+-    private ArrayList<A_Color> wrongAnswers = new ArrayList<>();
+ 
+ 
+ 
+@@ -30,17 +31,44 @@
+         setContentView(R.layout.activity_color_question_game);
+         runGame();
+ 
++        ImageButton repeat = findViewById(R.id.btnSpeaker);
++
++        repeat.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                MediaPlayer info = MediaPlayer.create(ColorQuestionGame.this, R.raw.quest_select_color);
++                MediaPlayer color = MediaPlayer.create(ColorQuestionGame.this, selectedAnswer.getColorSoundRef());
++                info.start();
++                info.setNextMediaPlayer(color);
++                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++                color.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++            }
++        });
+ 
+     }
+ 
+ 
+ 
+     public void GoToMenu(View view) {
+-        Intent menuGame = new Intent(this, GameMenu.class);
+-        startActivity(menuGame);
++        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
++        startActivity(extraMenu);
+     }
+ 
+     private void runGame(){
++
++        ArrayList<A_Color> wrongAnswers = new ArrayList<>();
+         ArrayList<String> colorsList = ColorFactory.getAllPossibleColors();
+         Random rand =  new Random();
+         Log.d("List",colorsList.toString());
+@@ -51,7 +79,14 @@
+         assert selectedAnswer != null;
+         colorsList.remove(selectedAnswer.getColorName());
+         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
++
+         wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
++        while(wrongAnswers.get(0).getColorName().equals(wrongAnswers.get(1).getColorName())){
++            Log.d("Repeated wrong answers: ", wrongAnswers.toString());
++            wrongAnswers.remove(1);
++            wrongAnswers.add(ColorFactory.getColor(colorsList.get(rand.nextInt(colorsList.size())),this,false));
++            Log.d("Changed wrong answers ",wrongAnswers.toString());
++        }
+         Log.d("wrong answers ",wrongAnswers.toString());
+ 
+         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_color);
+Index: app/src/main/java/edu/byui/childrenlearningapp/AnimalQuestionGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport android.content.Intent;\r\nimport android.media.MediaPlayer;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Random;\r\n\r\nimport edu.byui.childrenlearningapp.Factories.AnimalFactory;\r\nimport edu.byui.childrenlearningapp.Models.A_Animal;\r\n\r\npublic class AnimalQuestionGame extends AppCompatActivity {\r\n    private A_Animal selectedAnswer;\r\n    private ArrayList<A_Animal> wrongAnswers = new ArrayList<>();\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n\r\n\r\n        setContentView(R.layout.activity_animal_question_game);\r\n        runGame();\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public void GoToMenu(View view) {\r\n        Intent menuGame = new Intent(this, GameMenu.class);\r\n        startActivity(menuGame);\r\n    }\r\n    private void runGame(){\r\n        ArrayList<String> animalList = AnimalFactory.getAllPossibleAnimals();\r\n        Random rand =  new Random();\r\n        Log.d(\"List\",animalList.toString());\r\n        String selectedAnimal = animalList.get(rand.nextInt(animalList.size()));\r\n        selectedAnswer = AnimalFactory.getAnimal(selectedAnimal,this,true);\r\n\r\n        Log.d(\"Animal\", \"onCreate: selected Animal\"+selectedAnimal +\"  \"+ \"selected answer \"+selectedAnswer);\r\n        assert selectedAnswer != null;\r\n        animalList.remove(selectedAnswer.getAnimalName());\r\n        wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));\r\n        wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));\r\n        Log.d(\"wrong answers \",wrongAnswers.toString());\r\n\r\n        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_animal);\r\n        MediaPlayer animal = MediaPlayer.create(this, selectedAnswer.getAnimalSoundRef());\r\n        info.start();\r\n        info.setNextMediaPlayer(animal);\r\n\r\n        ImageButton button1;\r\n        ImageButton button2;\r\n        ImageButton button3;\r\n        Random randButton = new Random();\r\n        int randIntButton = randButton.nextInt(3);\r\n\r\n        Log.i(\"AnimalQuestionGame\", \"Random number \"+ randIntButton);\r\n\r\n        if(randIntButton ==1) {\r\n            button1 = findViewById(R.id.answer1);\r\n            button2 = findViewById(R.id.answer2);\r\n            button3 = findViewById(R.id.answer3);\r\n        }\r\n        else if(randIntButton ==2){\r\n            button1 = findViewById(R.id.answer2);\r\n            button2 = findViewById(R.id.answer3);\r\n            button3 = findViewById(R.id.answer1);\r\n        }\r\n        else {\r\n            button1 = findViewById(R.id.answer3);\r\n            button2 = findViewById(R.id.answer1);\r\n            button3 = findViewById(R.id.answer2);\r\n        }\r\n\r\n\r\n        button1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                selectedAnswer.playCorrectSound();\r\n                //Move to next game or Correct answer\r\n                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {\r\n                    @Override\r\n                    public void run() {\r\n                        runGame();\r\n                    }\r\n                }, 2000); // Millisecond 1000 = 1 sec\r\n\r\n            }\r\n        });\r\n        button1.setImageResource(selectedAnswer.getAnimalImageRef());\r\n        button2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(0).playWrongSound();\r\n            }\r\n        });\r\n        button2.setImageResource(wrongAnswers.get(0).getAnimalImageRef());\r\n\r\n\r\n        button3.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(1).playWrongSound();\r\n            }\r\n        });\r\n        button3.setImageResource(wrongAnswers.get(1).getAnimalImageRef());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/AnimalQuestionGame.java	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/java/edu/byui/childrenlearningapp/AnimalQuestionGame.java	(date 1617337055350)
+@@ -19,7 +19,6 @@
+ 
+ public class AnimalQuestionGame extends AppCompatActivity {
+     private A_Animal selectedAnswer;
+-    private ArrayList<A_Animal> wrongAnswers = new ArrayList<>();
+ 
+ 
+ 
+@@ -32,16 +31,44 @@
+         setContentView(R.layout.activity_animal_question_game);
+         runGame();
+ 
++        ImageButton repeat = findViewById(R.id.btnSpeaker);
++
++        repeat.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                MediaPlayer info = MediaPlayer.create(AnimalQuestionGame.this, R.raw.quest_select_animal);
++                MediaPlayer animal = MediaPlayer.create(AnimalQuestionGame.this, selectedAnswer.getAnimalSoundRef());
++                info.start();
++                info.setNextMediaPlayer(animal);
++                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++                animal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++            }
++        });
++
+ 
+     }
+ 
+ 
+ 
+     public void GoToMenu(View view) {
+-        Intent menuGame = new Intent(this, GameMenu.class);
+-        startActivity(menuGame);
++        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
++        startActivity(extraMenu);
+     }
+     private void runGame(){
++
++        ArrayList<A_Animal> wrongAnswers = new ArrayList<>();
+         ArrayList<String> animalList = AnimalFactory.getAllPossibleAnimals();
+         Random rand =  new Random();
+         Log.d("List",animalList.toString());
+@@ -50,15 +77,39 @@
+ 
+         Log.d("Animal", "onCreate: selected Animal"+selectedAnimal +"  "+ "selected answer "+selectedAnswer);
+         assert selectedAnswer != null;
++
+         animalList.remove(selectedAnswer.getAnimalName());
++        Log.d("List",animalList.toString());
++
++        wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
++
+         wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
+-        wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
++        while(wrongAnswers.get(0).getAnimalName().equals(wrongAnswers.get(1).getAnimalName())){
++            Log.d("Repeated wrong answers ",wrongAnswers.toString());
++            wrongAnswers.remove(1);
++            wrongAnswers.add(AnimalFactory.getAnimal(animalList.get(rand.nextInt(animalList.size())),this,false));
++            Log.d("Changed wrong answers ",wrongAnswers.toString());
++        }
+         Log.d("wrong answers ",wrongAnswers.toString());
+ 
+         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_animal);
+         MediaPlayer animal = MediaPlayer.create(this, selectedAnswer.getAnimalSoundRef());
+         info.start();
+         info.setNextMediaPlayer(animal);
++        info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++            @Override
++            public void onCompletion(MediaPlayer mediaPlayer) {
++                mediaPlayer.stop();
++                mediaPlayer.release();
++            }
++        });
++        animal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++            @Override
++            public void onCompletion(MediaPlayer mediaPlayer) {
++                mediaPlayer.stop();
++                mediaPlayer.release();
++            }
++        });
+ 
+         ImageButton button1;
+         ImageButton button2;
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.byui.childrenlearningapp\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.ChildrenLearningApp\">\r\n        <activity android:name=\".ShapeGame\"></activity>\r\n        <activity android:name=\".AnimalGame\" />\r\n        <activity\r\n            android:name=\".ColorGame\"\r\n            android:label=\"Colors Game\" />\r\n        <activity\r\n            android:name=\".ColorQuestionGame\"\r\n            android:label=\"Color Question Game\" />\r\n        <activity\r\n            android:name=\".AnimalQuestionGame\"\r\n            android:label=\"Animal Question Game\" />\r\n        <activity\r\n            android:name=\".NumberQuestionGame\"\r\n            android:label=\"Number Question Game\" />\r\n        <activity\r\n            android:name=\".ShapeQuestionGame\"\r\n            android:label=\"Shape Question Game\" />\r\n        <activity\r\n            android:name=\".NumberGame\"\r\n            android:label=\"Numbers Game\" />\r\n        <activity\r\n            android:name=\".LetterGame\"\r\n            android:label=\"Letters Game\"\r\n            android:screenOrientation=\"landscape\" />\r\n        <activity\r\n            android:name=\".FirstLogin\"\r\n            android:label=\"Parent Area\"\r\n            android:theme=\"@style/Theme.ChildrenLearningApp.NoActionBar\" />\r\n        <activity\r\n            android:name=\".GameMenu\"\r\n            android:label=\"Game Menu\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:label=\"Children Teaching\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/AndroidManifest.xml	(date 1617328459639)
+@@ -40,6 +40,10 @@
+         <activity
+             android:name=".GameMenu"
+             android:label="Game Menu" />
++        <activity
++            android:name=".ExtraGameMenu"
++            android:label="Extra Games" />
++
+         <activity
+             android:name=".MainActivity"
+             android:label="Children Teaching">
+Index: app/src/main/java/edu/byui/childrenlearningapp/ShapeQuestionGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport android.content.Intent;\r\nimport android.media.MediaPlayer;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Random;\r\n\r\nimport edu.byui.childrenlearningapp.Factories.ColorFactory;\r\nimport edu.byui.childrenlearningapp.Factories.ShapeFactory;\r\nimport edu.byui.childrenlearningapp.Models.A_Color;\r\nimport edu.byui.childrenlearningapp.Models.A_Shape;\r\n\r\npublic class ShapeQuestionGame extends AppCompatActivity {\r\n    private A_Shape selectedAnswer;\r\n    private ArrayList<A_Shape> wrongAnswers = new ArrayList<>();\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n\r\n\r\n        setContentView(R.layout.activity_shape_question_game);\r\n        runGame();\r\n\r\n    }\r\n\r\n\r\n\r\n    public void GoToMenu(View view) {\r\n        Intent menuGame = new Intent(this, GameMenu.class);\r\n        startActivity(menuGame);\r\n    }\r\n\r\n    private void runGame(){\r\n        ArrayList<String> shapeList = ShapeFactory.getAllPossibleShapes();\r\n        Random rand =  new Random();\r\n        Log.d(\"List\",shapeList.toString());\r\n        String selectedShape = shapeList.get(rand.nextInt(shapeList.size()));\r\n        selectedAnswer = ShapeFactory.getShape(selectedShape,this,true);\r\n\r\n        Log.d(\"Shape\", \"onCreate: selected Shape \"+selectedShape +\"  \"+ \"selected answer \"+selectedAnswer);\r\n        assert selectedAnswer != null;\r\n        shapeList.remove(selectedAnswer.getShapeName());\r\n        wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));\r\n        wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));\r\n        Log.d(\"wrong answers \",wrongAnswers.toString());\r\n\r\n        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_shape);\r\n        MediaPlayer shape = MediaPlayer.create(this, selectedAnswer.getShapeSoundRef());\r\n        info.start();\r\n        info.setNextMediaPlayer(shape);\r\n\r\n        ImageButton button1;\r\n        ImageButton button2;\r\n        ImageButton button3;\r\n        Random randButton = new Random();\r\n        int randIntButton = randButton.nextInt(3);\r\n\r\n        Log.i(\"ShapeQuestionGame\", \"Random number \"+ randIntButton);\r\n\r\n        if(randIntButton ==1) {\r\n            button1 = findViewById(R.id.answer1);\r\n            button2 = findViewById(R.id.answer2);\r\n            button3 = findViewById(R.id.answer3);\r\n        }\r\n        else if(randIntButton ==2){\r\n            button1 = findViewById(R.id.answer2);\r\n            button2 = findViewById(R.id.answer3);\r\n            button3 = findViewById(R.id.answer1);\r\n        }\r\n        else {\r\n            button1 = findViewById(R.id.answer3);\r\n            button2 = findViewById(R.id.answer1);\r\n            button3 = findViewById(R.id.answer2);\r\n        }\r\n\r\n\r\n        button1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                selectedAnswer.playCorrectSound();\r\n                //Move to next game or Correct answer\r\n                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {\r\n                    @Override\r\n                    public void run() {\r\n                        //Intent next = new Intent(ShapeQuestionGame.this, ShapeQuestionGame.class);\r\n                        //startActivity(next);\r\n                        runGame();\r\n                    }\r\n                }, 2000); // Millisecond 1000 = 1 sec\r\n\r\n            }\r\n        });\r\n        button1.setImageResource(selectedAnswer.getShapeImageRef());\r\n        button2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(0).playWrongSound();\r\n            }\r\n        });\r\n        button2.setImageResource(wrongAnswers.get(0).getShapeImageRef());\r\n\r\n\r\n        button3.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(1).playWrongSound();\r\n            }\r\n        });\r\n        button3.setImageResource(wrongAnswers.get(1).getShapeImageRef());\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/ShapeQuestionGame.java	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/java/edu/byui/childrenlearningapp/ShapeQuestionGame.java	(date 1617335401908)
+@@ -20,8 +20,7 @@
+ import edu.byui.childrenlearningapp.Models.A_Shape;
+ 
+ public class ShapeQuestionGame extends AppCompatActivity {
+-    private A_Shape selectedAnswer;
+-    private ArrayList<A_Shape> wrongAnswers = new ArrayList<>();
++
+ 
+ 
+ 
+@@ -39,11 +38,13 @@
+ 
+ 
+     public void GoToMenu(View view) {
+-        Intent menuGame = new Intent(this, GameMenu.class);
+-        startActivity(menuGame);
++        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
++        startActivity(extraMenu);
+     }
+ 
+     private void runGame(){
++        A_Shape selectedAnswer;
++        ArrayList<A_Shape> wrongAnswers = new ArrayList<>();
+         ArrayList<String> shapeList = ShapeFactory.getAllPossibleShapes();
+         Random rand =  new Random();
+         Log.d("List",shapeList.toString());
+@@ -55,6 +56,12 @@
+         shapeList.remove(selectedAnswer.getShapeName());
+         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
+         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
++        while(wrongAnswers.get(0).getShapeName().equals(wrongAnswers.get(1).getShapeName())){
++            Log.d("Repeated wrong answers: ", wrongAnswers.toString());
++            wrongAnswers.remove(1);
++            wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
++            Log.d("Changed wrong answers ",wrongAnswers.toString());
++        }
+         Log.d("wrong answers ",wrongAnswers.toString());
+ 
+         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_shape);
+Index: app/src/main/java/edu/byui/childrenlearningapp/NumberQuestionGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport android.content.Intent;\r\nimport android.media.MediaPlayer;\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.ImageButton;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Random;\r\n\r\nimport edu.byui.childrenlearningapp.Factories.ColorFactory;\r\nimport edu.byui.childrenlearningapp.Factories.NumberFactory;\r\nimport edu.byui.childrenlearningapp.Models.A_Color;\r\nimport edu.byui.childrenlearningapp.Models.A_Number;\r\n\r\npublic class NumberQuestionGame extends AppCompatActivity {\r\n    private A_Number selectedAnswer;\r\n    private ArrayList<A_Number> wrongAnswers = new ArrayList<>();\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        setContentView(R.layout.activity_number_question_game);\r\n        runGame();\r\n\r\n    }\r\n\r\n\r\n\r\n    public void GoToMenu(View view) {\r\n        Intent menuGame = new Intent(this, GameMenu.class);\r\n        startActivity(menuGame);\r\n    }\r\n\r\n    private void runGame(){\r\n        ArrayList<String> numberList = NumberFactory.getAllPossibleNumbers();\r\n        Random rand =  new Random();\r\n        Log.d(\"List\",numberList.toString());\r\n        String selectedNumber = numberList.get(rand.nextInt(numberList.size()));\r\n        selectedAnswer = NumberFactory.getNumber(selectedNumber,this,true);\r\n\r\n        Log.d(\"Number\", \"onCreate: selected Number \"+selectedNumber +\"  \"+ \"selected answer \"+selectedAnswer);\r\n        assert selectedAnswer != null;\r\n        numberList.remove(selectedAnswer.getNumberName());\r\n        wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));\r\n        wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));\r\n        Log.d(\"wrong answers \",wrongAnswers.toString());\r\n        MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_number);\r\n        MediaPlayer number = MediaPlayer.create(this, selectedAnswer.getNumberSoundRef());\r\n        info.start();\r\n        info.setNextMediaPlayer(number);\r\n\r\n        ImageButton button1;\r\n        ImageButton button2;\r\n        ImageButton button3;\r\n        Random randButton = new Random();\r\n        int randIntButton = randButton.nextInt(3);\r\n\r\n        Log.i(\"NumberQuestionGame\", \"Random number \"+ randIntButton);\r\n\r\n        if(randIntButton ==1) {\r\n            button1 = findViewById(R.id.answer1);\r\n            button2 = findViewById(R.id.answer2);\r\n            button3 = findViewById(R.id.answer3);\r\n        }\r\n        else if(randIntButton ==2){\r\n            button1 = findViewById(R.id.answer2);\r\n            button2 = findViewById(R.id.answer3);\r\n            button3 = findViewById(R.id.answer1);\r\n        }\r\n        else {\r\n            button1 = findViewById(R.id.answer3);\r\n            button2 = findViewById(R.id.answer1);\r\n            button3 = findViewById(R.id.answer2);\r\n        }\r\n\r\n\r\n        button1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                selectedAnswer.playCorrectSound();\r\n                //Move to next game or Correct answer\r\n                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {\r\n                    @Override\r\n                    public void run() {\r\n                        runGame();\r\n                    }\r\n                }, 2000); // Millisecond 1000 = 1 sec\r\n\r\n            }\r\n        });\r\n        button1.setImageResource(selectedAnswer.getNumberImageRef());\r\n        button2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(0).playWrongSound();\r\n            }\r\n        });\r\n        button2.setImageResource(wrongAnswers.get(0).getNumberImageRef());\r\n\r\n\r\n        button3.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                wrongAnswers.get(1).playWrongSound();\r\n            }\r\n        });\r\n        button3.setImageResource(wrongAnswers.get(1).getNumberImageRef());\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/NumberQuestionGame.java	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/java/edu/byui/childrenlearningapp/NumberQuestionGame.java	(date 1617337055478)
+@@ -21,9 +21,6 @@
+ 
+ public class NumberQuestionGame extends AppCompatActivity {
+     private A_Number selectedAnswer;
+-    private ArrayList<A_Number> wrongAnswers = new ArrayList<>();
+-
+-
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -32,16 +29,43 @@
+         setContentView(R.layout.activity_number_question_game);
+         runGame();
+ 
++        ImageButton repeat = findViewById(R.id.btnSpeaker);
++
++        repeat.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                MediaPlayer info = MediaPlayer.create(NumberQuestionGame.this, R.raw.quest_select_number);
++                MediaPlayer number = MediaPlayer.create(NumberQuestionGame.this, selectedAnswer.getNumberSoundRef());
++                info.start();
++                info.setNextMediaPlayer(number);
++                info.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++                number.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
++                    @Override
++                    public void onCompletion(MediaPlayer mediaPlayer) {
++                        mediaPlayer.stop();
++                        mediaPlayer.release();
++                    }
++                });
++            }
++        });
+     }
+ 
+ 
+ 
+     public void GoToMenu(View view) {
+-        Intent menuGame = new Intent(this, GameMenu.class);
+-        startActivity(menuGame);
++        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
++        startActivity(extraMenu);;
+     }
+ 
+     private void runGame(){
++
++        ArrayList<A_Number> wrongAnswers = new ArrayList<>();
+         ArrayList<String> numberList = NumberFactory.getAllPossibleNumbers();
+         Random rand =  new Random();
+         Log.d("List",numberList.toString());
+@@ -52,7 +76,14 @@
+         assert selectedAnswer != null;
+         numberList.remove(selectedAnswer.getNumberName());
+         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
++
+         wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
++        while(wrongAnswers.get(0).getNumberName().equals(wrongAnswers.get(1).getNumberName())){
++            Log.d("Repeated wrong answers: ", wrongAnswers.toString());
++            wrongAnswers.remove(1);
++            wrongAnswers.add(NumberFactory.getNumber(numberList.get(rand.nextInt(numberList.size())),this,false));
++            Log.d("Changed wrong answers ",wrongAnswers.toString());
++        }
+         Log.d("wrong answers ",wrongAnswers.toString());
+         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_number);
+         MediaPlayer number = MediaPlayer.create(this, selectedAnswer.getNumberSoundRef());
+Index: app/src/main/java/edu/byui/childrenlearningapp/GameMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.byui.childrenlearningapp;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\n\r\n/**\r\n * Skeleton of an Android Things activity.\r\n * <p>\r\n * Android Things peripheral APIs are accessible through the PeripheralManager\r\n * For example, the snippet below will open a GPIO pin and set it to HIGH:\r\n * <p>\r\n * PeripheralManager manager = PeripheralManager.getInstance();\r\n * try {\r\n * Gpio gpio = manager.openGpio(\"BCM6\");\r\n * gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);\r\n * gpio.setValue(true);\r\n * } catch (IOException e) {\r\n * Log.e(TAG, \"Unable to access GPIO\");\r\n * }\r\n * <p>\r\n * You can find additional examples on GitHub: https://github.com/androidthings\r\n */\r\n/**\r\n * In this method the user will open the Letter Game, where the kid will learn his/her name.\r\n * @param btnLetter\r\n */\r\npublic class GameMenu extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_game_menu);\r\n    }\r\n\r\n\r\n    public void startLetterGame (View btnLetter){\r\n        Intent letterGame = new Intent(this, LetterGame.class);\r\n        startActivity(letterGame);\r\n    }\r\n    public void startNumberGame (View btnNumber) {\r\n        Intent numberGame = new Intent(this, NumberGame.class);\r\n        startActivity(numberGame);\r\n    }\r\n\r\n    public void startColorGame (View btnColor) {\r\n        Intent colorGame = new Intent(this, ColorGame.class);\r\n        startActivity(colorGame);\r\n    }\r\n\r\n    public void startAnimalGame (View btnAnimal) {\r\n        Intent animalGame = new Intent(this, AnimalGame.class);\r\n        startActivity(animalGame);\r\n    }\r\n    public void startShapeGame (View btnAnimal) {\r\n        Intent shapeGame = new Intent(this, ShapeGame.class);\r\n        startActivity(shapeGame);\r\n    }\r\n    public void GoToExtraGames(View btnExtra){\r\n        setContentView(R.layout.activity_extra_game_menu);\r\n    }\r\n    public void startQuestionAnimalGame(View btlQuestionColor){\r\n        Log.d(\"testing\",\"got to Animal question\");\r\n        Intent questionGame = new Intent(this, AnimalQuestionGame.class);\r\n        startActivity(questionGame);\r\n    }\r\n\r\n    public void startQuestionColorGame(View btlQuestionColor){\r\n        Log.d(\"testing\",\"got to Color question\");\r\n        Intent questionGame = new Intent(this, ColorQuestionGame.class);\r\n        startActivity(questionGame);\r\n    }\r\n\r\n    public void startQuestionNumberGame(View btlQuestionColor){\r\n        Log.d(\"testing\",\"got to Number question\");\r\n        Intent questionGame = new Intent(this, NumberQuestionGame.class);\r\n        startActivity(questionGame);\r\n    }\r\n\r\n    public void startQuestionShapeGame(View btlQuestionColor){\r\n        Log.d(\"testing\",\"got to Shape question\");\r\n        Intent questionGame = new Intent(this, ShapeQuestionGame.class);\r\n        startActivity(questionGame);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/GameMenu.java	(revision 086cd936f11ead0ff4dccf1ed952330ae55d6c85)
++++ app/src/main/java/edu/byui/childrenlearningapp/GameMenu.java	(date 1617328336628)
+@@ -4,7 +4,6 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
+-import android.util.Log;
+ import android.view.View;
+ 
+ /**
+@@ -60,29 +59,9 @@
+         startActivity(shapeGame);
+     }
+     public void GoToExtraGames(View btnExtra){
+-        setContentView(R.layout.activity_extra_game_menu);
+-    }
+-    public void startQuestionAnimalGame(View btlQuestionColor){
+-        Log.d("testing","got to Animal question");
+-        Intent questionGame = new Intent(this, AnimalQuestionGame.class);
+-        startActivity(questionGame);
+-    }
+ 
+-    public void startQuestionColorGame(View btlQuestionColor){
+-        Log.d("testing","got to Color question");
+-        Intent questionGame = new Intent(this, ColorQuestionGame.class);
+-        startActivity(questionGame);
++        Intent extraGame = new Intent(this, ExtraGameMenu.class);
++        startActivity(extraGame);
+     }
+ 
+-    public void startQuestionNumberGame(View btlQuestionColor){
+-        Log.d("testing","got to Number question");
+-        Intent questionGame = new Intent(this, NumberQuestionGame.class);
+-        startActivity(questionGame);
+-    }
+-
+-    public void startQuestionShapeGame(View btlQuestionColor){
+-        Log.d("testing","got to Shape question");
+-        Intent questionGame = new Intent(this, ShapeQuestionGame.class);
+-        startActivity(questionGame);
+-    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/edu/byui/childrenlearningapp/ExtraGameMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/edu/byui/childrenlearningapp/ExtraGameMenu.java	(date 1617327944747)
++++ app/src/main/java/edu/byui/childrenlearningapp/ExtraGameMenu.java	(date 1617327944747)
+@@ -0,0 +1,65 @@
++package edu.byui.childrenlearningapp;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.util.Log;
++import android.view.View;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++/**
++ * Skeleton of an Android Things activity.
++ * <p>
++ * Android Things peripheral APIs are accessible through the PeripheralManager
++ * For example, the snippet below will open a GPIO pin and set it to HIGH:
++ * <p>
++ * PeripheralManager manager = PeripheralManager.getInstance();
++ * try {
++ * Gpio gpio = manager.openGpio("BCM6");
++ * gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
++ * gpio.setValue(true);
++ * } catch (IOException e) {
++ * Log.e(TAG, "Unable to access GPIO");
++ * }
++ * <p>
++ * You can find additional examples on GitHub: https://github.com/androidthings
++ */
++
++/**
++ * In this method the user will open the Letter Game, where the kid will learn his/her name.
++ * @param btnLetter
++ */
++public class ExtraGameMenu extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_extra_game_menu);
++    }
++
++
++
++    public void startQuestionAnimalGame(View btlQuestionColor){
++        Log.d("testing","got to Animal question");
++        Intent questionGame = new Intent(this, AnimalQuestionGame.class);
++        startActivity(questionGame);
++    }
++
++    public void startQuestionColorGame(View btlQuestionColor){
++        Log.d("testing","got to Color question");
++        Intent questionGame = new Intent(this, ColorQuestionGame.class);
++        startActivity(questionGame);
++    }
++
++    public void startQuestionNumberGame(View btlQuestionColor){
++        Log.d("testing","got to Number question");
++        Intent questionGame = new Intent(this, NumberQuestionGame.class);
++        startActivity(questionGame);
++    }
++
++    public void startQuestionShapeGame(View btlQuestionColor){
++        Log.d("testing","got to Shape question");
++        Intent questionGame = new Intent(this, ShapeQuestionGame.class);
++        startActivity(questionGame);
++    }
++}
+\ No newline at end of file

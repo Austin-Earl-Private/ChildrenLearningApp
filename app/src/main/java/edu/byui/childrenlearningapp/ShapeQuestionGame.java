@@ -21,29 +21,44 @@ import edu.byui.childrenlearningapp.Models.A_Shape;
 
 public class ShapeQuestionGame extends AppCompatActivity {
     private A_Shape selectedAnswer;
-    private ArrayList<A_Shape> wrongAnswers = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_shape_question_game);
         runGame();
+
+        ImageButton repeat = findViewById(R.id.btnSpeaker);
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MediaPlayer shape = MediaPlayer.create(ShapeQuestionGame.this, selectedAnswer.getShapeSoundRef());
+                shape.start();
+                shape.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
 
     }
 
 
 
     public void GoToMenu(View view) {
-        Intent menuGame = new Intent(this, GameMenu.class);
-        startActivity(menuGame);
+        Intent extraMenu = new Intent(this, ExtraGameMenu.class);
+        startActivity(extraMenu);
     }
 
     private void runGame(){
+
+        ArrayList<A_Shape> wrongAnswers = new ArrayList<>();
         ArrayList<String> shapeList = ShapeFactory.getAllPossibleShapes();
         Random rand =  new Random();
         Log.d("List",shapeList.toString());
@@ -55,6 +70,12 @@ public class ShapeQuestionGame extends AppCompatActivity {
         shapeList.remove(selectedAnswer.getShapeName());
         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
         wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
+        while(wrongAnswers.get(0).getShapeName().equals(wrongAnswers.get(1).getShapeName())){
+            Log.d("Repeated wrong answers: ", wrongAnswers.toString());
+            wrongAnswers.remove(1);
+            wrongAnswers.add(ShapeFactory.getShape(shapeList.get(rand.nextInt(shapeList.size())),this,false));
+            Log.d("Changed wrong answers ",wrongAnswers.toString());
+        }
         Log.d("wrong answers ",wrongAnswers.toString());
 
         MediaPlayer info = MediaPlayer.create(this, R.raw.quest_select_shape);
