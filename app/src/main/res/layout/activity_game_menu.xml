@@ -73,7 +73,7 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="98dp"
+                android:layout_width="96dp"
                 android:layout_height="109dp"
                 android:layout_gravity="fill"
                 android:layout_marginStart="158dp"
